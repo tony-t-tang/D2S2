@@ -9,6 +9,7 @@ export default function DragDrop() {
 				width: 200,
 				height: 500,
 				backgroundColor: '#D9D9D9',
+				border: 1,
 			}}
 		>
 			Drag and Drop

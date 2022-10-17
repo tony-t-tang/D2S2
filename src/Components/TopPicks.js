@@ -7,8 +7,9 @@ export default function TopPicks() {
 		<Box
 			sx={{
 				width: 300,
-				height: 494,
+				height: 565,
 				backgroundColor: '#D9D9D9',
+				border: 1,
 			}}
 		>
 			Top Picks

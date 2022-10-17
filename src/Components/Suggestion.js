@@ -7,9 +7,9 @@ export default function Suggestion() {
 		<Box
 			sx={{
 				width: 500,
-				height: 494,
+				height: 565,
 				backgroundColor: '#D9D9D9',
-				margin: 1
+				border: 1,
 			}}
 		>
 			Suggestion

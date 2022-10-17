@@ -3,12 +3,17 @@ import DragDrop from './Components/DragDrop';
 import Canvas from './Components/Canvas';
 import Suggestion from './Components/Suggestion';
 import TopPicks from './Components/TopPicks';
+import Toolbar from './Components/Toolbar';
+
 function MainFrame() {
 	return (
 		<div className='main-frame'>
 			PSDoodle
 			<div className='idk'>
-				<DragDrop />
+				<div>
+					<Toolbar />
+					<DragDrop />
+				</div>
 				<Canvas />
 				<Suggestion />
 				<TopPicks />

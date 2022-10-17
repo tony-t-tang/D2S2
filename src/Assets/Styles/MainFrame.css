@@ -1,9 +1,11 @@
 .main-frame {
     color: white;
+  
 }
 
 .main-frame .idk {
     justify-content: center;
     display:flex;
-    align-items: center;
+    text-align: center;
+    color: black
 }

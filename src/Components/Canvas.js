@@ -6,10 +6,12 @@ export default function Canvas() {
 		<Box
 			sx={{
 				width: 500,
-				height: 494,
+				height: 565,
 				backgroundColor: '#D9D9D9',
-				margin: 2,
+				border: 1,
 			}}
-		>Canvas</Box>
+		>
+			Canvas
+		</Box>
 	);
 }
