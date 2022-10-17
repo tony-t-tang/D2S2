@@ -8,7 +8,7 @@ In the project directory, you can run:
 
 ### `npm install`
 
-npm install on git clone.\
+npm install on git clone.
 
 ### `npm start`
 
