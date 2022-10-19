@@ -13,6 +13,7 @@ function MainFrame() {
 				<div>
 					<Toolbar />
 					<DragDrop />
+					
 				</div>
 				<Canvas />
 				<Suggestion />

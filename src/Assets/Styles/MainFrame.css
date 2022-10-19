@@ -1,10 +1,13 @@
 .main-frame {
     color: white;
+    width: auto;
+    height: auto;
 }
 
 .main-frame .idk {
     justify-content: center;
-    display:flex;
+    display:flex; 
     text-align: center;
     color: black
+    
 }
