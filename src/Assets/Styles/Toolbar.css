@@ -1,6 +1,7 @@
 .Icons > button {
-    margin: 2px;
+    margin: 5px;
     top: 20px;
     position: relative;
     cursor: pointer;
+    
 }

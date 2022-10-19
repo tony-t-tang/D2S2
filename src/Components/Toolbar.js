@@ -6,13 +6,21 @@ import RedoIcon from '@mui/icons-material/Redo';
 import UndoIcon from '@mui/icons-material/Undo';
 import ResizeIcon from '@mui/icons-material/AspectRatio';
 import GrabIcon from '@mui/icons-material/PanToolAlt';
+import IconButton from '@mui/material/IconButton';
+import Button from '@mui/material/Button';
 
 export default function Toolbar() {
-	const [click, setClick] = useState(GrabIcon);
+	const [click, setClick] = useState('');
+
+	// handle for when you click icon to change state
+
+	// handle for each icon function
+
 	function Grab() {
 		click = StopIcon;
 		setClick(GrabIcon);
 	}
+
 	return (
 		<Box
 			sx={{
@@ -23,18 +31,18 @@ export default function Toolbar() {
 			}}
 		>
 			<div className='Icons'>
-				<button onClick={setClick}>
+				<IconButton sx={{ color: 'black' }}>
 					<StopIcon />
-				</button>
-				<button>
+				</IconButton>
+				<IconButton sx={{ color: 'black' }}>
 					<RedoIcon />
-				</button>
-				<button>
+				</IconButton>
+				<IconButton sx={{ color: 'black' }}>
 					<UndoIcon />
-				</button>
-				<button>
+				</IconButton>
+				<IconButton sx={{ color: 'black' }}>
 					<ResizeIcon />
-				</button>
+				</IconButton>
 			</div>
 		</Box>
 	);

@@ -12,7 +12,7 @@ export default function DragDrop() {
 				border: 1,
 			}}
 		>
-			Drag and Drop
+			Drag & Drop
 		</Box>
 	);
 }
