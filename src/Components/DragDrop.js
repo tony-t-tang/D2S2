@@ -7,7 +7,7 @@ export default function DragDrop() {
 		<Box
 			sx={{
 				width: 200,
-				height: 498.2,
+				height: 523,
 				backgroundColor: '#D9D9D9',
 				border: 1,
 			}}

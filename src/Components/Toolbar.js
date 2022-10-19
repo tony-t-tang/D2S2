@@ -25,7 +25,7 @@ export default function Toolbar() {
 		<Box
 			sx={{
 				width: 200,
-				height: 65,
+				height: 40,
 				backgroundColor: '#D9D9D9',
 				border: 1,
 			}}
