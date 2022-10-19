@@ -1,11 +1,16 @@
 [
     {
-        "id":1
+        "id": 1,
+        "type": "menu",
+        "height": 1,
+        "width": 1,
+        "start-postion": 1,
+        "end-position": 1
     },
     {
-        "id":2
+        "id": 2
     },
     {
-        "id":3
+        "id": 3
     }
 ]

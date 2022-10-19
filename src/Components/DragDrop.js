@@ -2,10 +2,6 @@ import React from 'react';
 import '../Assets/Styles/DragDrop.css';
 import { Box } from '@mui/material';
 
-
-
-
-
 export default function DragDrop() {
 	return (
 		<Box
