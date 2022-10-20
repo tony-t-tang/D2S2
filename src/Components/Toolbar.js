@@ -18,16 +18,19 @@ export default function Toolbar() {
 
 	function Grab() {
 		click = StopIcon;
-		setClick(GrabIcon);
+		setClick = StopIcon;
 	}
 
 	return (
 		<Box
 			sx={{
+
 				width: 200,
 				height: 40,
 				backgroundColor: '#D9D9D9',
 				border: 1,
+				
+				
 			}}
 		>
 			<div className='Icons'>
