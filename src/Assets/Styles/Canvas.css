@@ -1,5 +1,5 @@
 .MaxScreen{
-    position: absolute;
-    top: 56.5%;
-    right: 49.5%;
+    position: flex;
+    margin: 358px;
+    margin-right: 50px;
 }
