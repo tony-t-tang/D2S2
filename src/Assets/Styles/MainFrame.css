@@ -1,13 +1,16 @@
-.main-frame {
-    color: white;
-    width: auto;
-    height: auto;
+
+.main-frame{
+    color:white;
 }
 
-.main-frame .idk {
+
+.idk {
     justify-content: center;
-    display:flex; 
+    display:flex;
+    align-items: center;
+    margin-right: auto;
     text-align: center;
     color: black
+    
     
 }

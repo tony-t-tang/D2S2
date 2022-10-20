@@ -1,4 +1,5 @@
 import './Assets/Styles/MainFrame.css';
+import title from './Components/PSDoodle';
 import DragDrop from './Components/DragDrop';
 import Canvas from './Components/Canvas';
 import Suggestion from './Components/Suggestion';
@@ -10,8 +11,9 @@ import { HTML5Backend } from 'react-dnd-html5-backend';
 function MainFrame() {
 	return (
 		<DndProvider backend={HTML5Backend}>
+			
 			<div className='main-frame'>
-				PSDoodle
+				<title></title>
 				<div className='idk'>
 					<div>
 						<Toolbar />
@@ -22,6 +24,7 @@ function MainFrame() {
 					<TopPicks />
 				</div>
 			</div>
+		
 		</DndProvider>
 	);
 }

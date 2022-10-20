@@ -3,6 +3,8 @@ import { useState } from 'react';
 import { Box } from '@mui/material';
 import Icon from './Icon';
 import { useDrop } from 'react-dnd';
+import FullscreenIcon from '@mui/icons-material/Fullscreen';
+import IconButton from '@mui/material/IconButton';
 
 const PictureList = [
 	{
@@ -67,6 +69,17 @@ export default function Canvas() {
 						/>
 					);
 				})}
+			</div>
+			<div className = 'MaxScreen'>
+			<IconButton>
+			<FullscreenIcon sx={{
+				color: 'black',
+				height: 25,
+				width: 60,
+				display: 'inline'
+				
+			}}></FullscreenIcon>
+			</IconButton>
 			</div>
 		</Box>
 	);

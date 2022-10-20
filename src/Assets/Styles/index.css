@@ -5,4 +5,8 @@ html, body {
     height: 100%;
     width: 100%;
     background-color: black;
+    position: absolute;
+    overflow: hidden;
+    left: 0%;
+    bottom: -10%
 }
