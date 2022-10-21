@@ -1,5 +1,5 @@
 import './Assets/Styles/MainFrame.css';
-import title from './Components/PSDoodle';
+import PSDoodle from './Components/PSDoodle';
 import DragDrop from './Components/DragDrop';
 import Canvas from './Components/Canvas';
 import Suggestion from './Components/Suggestion';
@@ -13,7 +13,7 @@ function MainFrame() {
 		<DndProvider backend={HTML5Backend}>
 			
 			<div className='main-frame'>
-				<title></title>
+				<PSDoodle></PSDoodle>
 				<div className='idk'>
 					<div>
 						<Toolbar />
