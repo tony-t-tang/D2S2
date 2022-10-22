@@ -4,6 +4,7 @@ import { useDrop } from 'react-dnd';
 import { Box } from '@mui/material';
 import update from 'immutability-helper'
 import Icon from './Icon';
+import DraggableIcon from './DraggableIcon';
 
 function getStyles(left, top, isDragging) {
 	const transform = `translate3d(${left}px, ${top}px, 0)`;
@@ -34,10 +35,9 @@ export default function Canvas() {
 	);
 
 	const addIconToCanvas = (id) => {
-		console.log("meow")
-		console.log(canvas)
 		const iconList = PictureList.filter((picture) => id === picture.id);
 		setCanvas((canvas) => [...canvas, iconList[0]]);
+
 	};
 
 	const [, drop] = useDrop(
@@ -73,7 +73,7 @@ export default function Canvas() {
 		>
 			<div>Canvas</div>
 			{Object.keys(canvas).map((key) => (
-				<Icon
+				<DraggableIcon
 					key={key}
 					id={key}
 					{...canvas[key]}

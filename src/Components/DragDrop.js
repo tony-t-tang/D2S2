@@ -2,6 +2,11 @@ import '../Assets/Styles/DragDrop.css';
 import { Box } from '@mui/material';
 import Icon from './Icon';
 
+function getStyles() {
+	return {
+		position: 'relative',
+	};
+}
 
 
 export default function DragDrop() {
@@ -25,6 +30,7 @@ export default function DragDrop() {
 						src={picture.src}
 						left={0}
 						top={0}
+						style={getStyles()}
 					/>
 				);
 			})}
