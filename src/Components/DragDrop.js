@@ -28,8 +28,6 @@ export default function DragDrop() {
 						key={picture.id}
 						id={picture.id}
 						src={picture.src}
-						left={0}
-						top={0}
 						style={getStyles()}
 					/>
 				);

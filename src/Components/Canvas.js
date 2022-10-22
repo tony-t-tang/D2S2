@@ -3,7 +3,6 @@ import { useState, useCallback } from 'react';
 import { useDrop } from 'react-dnd';
 import { Box } from '@mui/material';
 import update from 'immutability-helper'
-import Icon from './Icon';
 import DraggableIcon from './DraggableIcon';
 
 function getStyles(left, top, isDragging) {
