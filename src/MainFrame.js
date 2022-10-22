@@ -11,7 +11,6 @@ import { HTML5Backend } from 'react-dnd-html5-backend';
 function MainFrame() {
 	return (
 		<DndProvider backend={HTML5Backend}>
-			
 			<div className='main-frame'>
 				<PSDoodle></PSDoodle>
 				<div className='idk'>
@@ -24,7 +23,6 @@ function MainFrame() {
 					<TopPicks />
 				</div>
 			</div>
-		
 		</DndProvider>
 	);
 }

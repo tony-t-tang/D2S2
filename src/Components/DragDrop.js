@@ -1,8 +1,12 @@
-import React from 'react';
 import '../Assets/Styles/DragDrop.css';
 import { Box } from '@mui/material';
+import Icon from './Icon';
+
+
 
 export default function DragDrop() {
+	let PictureList = require('../Data/PictureList.json');
+
 	return (
 		<Box
 			sx={{
@@ -13,6 +17,17 @@ export default function DragDrop() {
 			}}
 		>
 			Drag & Drop
+			{PictureList.map((picture) => {
+				return (
+					<Icon
+						key={picture.id}
+						id={picture.id}
+						src={picture.src}
+						left={0}
+						top={0}
+					/>
+				);
+			})}
 		</Box>
 	);
 }
