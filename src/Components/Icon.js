@@ -1,21 +1,33 @@
 import { useDrag } from 'react-dnd';
+// import { getEmptyImage } from 'react-dnd-html5-backend';
+// import { useEffect } from 'react';
 
-export default function Icon({id, url}) {
-	const [{ isDragging }, drag] = useDrag(() => ({
-		type: 'image',
-		item: { id: id },
-		collect: (monitor) => ({
-			isDragging: !!monitor.isDragging(),
+export default function Icon({id, src}) {
+	//FIX DROP LOCATION ON MOUSE
+	let left = window.event.clientX - window.event.target.offsetLeft;
+	let top = window.event.clientY - window.event.target.offsetTop;
+
+	console.log(left)
+	console.log(top)
+
+	const [, drag] = useDrag(
+		() => ({
+			type: 'image',
+			item: { id, src, left, top },
+			collect: (monitor) => ({
+				isDragging: monitor.isDragging(),
+			}),
 		}),
-	}));
+		[id, src, left, top]
+	);
 
 	return (
 		<img
 			ref={drag}
-            src={url}
+			type='image/png'
+			src={src}
 			width='150px'
-			style={{ border: isDragging ? '5px solid pink' : '0px' }}
-            alt="meow"
+			alt='error'
 		/>
 	);
 }
