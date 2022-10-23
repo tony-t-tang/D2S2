@@ -1,6 +1,7 @@
 [
     {
         "id": 1,
+        "uuid": "id", 
         "type": "menu",
         "height": 1,
         "width": 1,

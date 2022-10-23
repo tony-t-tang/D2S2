@@ -1,7 +1,7 @@
 import '../Assets/Styles/DragDrop.css';
 import { Box } from '@mui/material';
 import Icon from './Icon';
-
+import { v4 as uuidv4} from 'uuid';
 function getStyles() {
 	return {
 		position: 'relative',
@@ -10,6 +10,7 @@ function getStyles() {
 
 
 export default function DragDrop() {
+	let uuid = uuidv4();
 	let PictureList = require('../Data/PictureList.json');
 
 	return (
@@ -27,6 +28,7 @@ export default function DragDrop() {
 					<Icon
 						key={picture.id}
 						id={picture.id}
+						uuid = {picture.uuid}
 						src={picture.src}
 						style={getStyles()}
 					/>
