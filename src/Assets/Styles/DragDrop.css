@@ -1,3 +1,24 @@
-.scrollbar{
-    overflow: scroll;
+/*scroll*/
+.InsideDragDrop{
+    overflow:scroll;
+    overflow-x:hidden;
+    direction: rtl;
 }
+::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background-color: #D9D9D9;
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #888;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }

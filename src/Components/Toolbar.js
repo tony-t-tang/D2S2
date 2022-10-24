@@ -22,11 +22,12 @@ export default function Toolbar() {
 	}
 
 	return (
+		<div className = 'Toolbar'>
 		<Box
 			sx={{
 
-				width: 200,
-				height: 40,
+				width: 202,
+				height: 38,
 				backgroundColor: '#D9D9D9',
 				border: 1,
 				
@@ -48,5 +49,6 @@ export default function Toolbar() {
 				</IconButton>
 			</div>
 		</Box>
+		</div>
 	);
 }
