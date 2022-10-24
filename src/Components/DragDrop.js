@@ -2,6 +2,7 @@ import '../Assets/Styles/DragDrop.css';
 import { Box } from '@mui/material';
 import Icon from './Icon';
 import { v4 as uuidv4} from 'uuid';
+
 function getStyles() {
 	return {
 		position: 'relative',
