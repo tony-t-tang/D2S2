@@ -16,8 +16,8 @@ function MainFrame() {
 				<PSDoodle></PSDoodle>
 				<div className='idk'>
 					<div>
-						<Searchbar/>
 						<Toolbar />
+						<Searchbar/>
 						<DragDrop />
 					</div>
 					<Canvas />

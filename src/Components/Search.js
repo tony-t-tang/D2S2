@@ -6,7 +6,6 @@ const Search = () => {
  const [searchInput, setSearchInput] = useState("");
 
  const Icons = [
-
   
   { name: "Search", IconID: "1" },
   { name: "Square", IconID: "2" },
@@ -43,7 +42,7 @@ return <div>
 <div>
   <tr>
     <td>{Icons.name}</td>
-    <td>{Icons.continent}</td>
+    <td>{Icons.IconID}</td>
   </tr>
 </div>
 
