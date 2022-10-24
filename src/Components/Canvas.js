@@ -36,7 +36,7 @@ export default function Canvas() {
 
 	//Adds icon to canvas array
 	const addIconToCanvas = (id) => {
-		const iconList = PictureList.filter((picture) => id === picture.id);
+		const iconList = PictureList.filter((picture) => (id === picture.id));
 		setCanvas((canvas) => [...canvas, iconList[0]]);
 	};
 
@@ -49,8 +49,10 @@ export default function Canvas() {
 
 				let left = Math.round(item.left + delta.x);
 				let top = Math.round(item.top + delta.y);
-
+					
 				console.log(item);
+				console.log(left);
+				console.log(top);
 
 				addIconToCanvas(item.id);
 				moveIcon(item.id, left, top);
@@ -58,7 +60,7 @@ export default function Canvas() {
 				return undefined;
 			},
 		}),
-		[moveIcon]
+		[]
 	);
 
 	return (
