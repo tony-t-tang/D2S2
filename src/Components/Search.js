@@ -1,6 +1,5 @@
 import React, {useState} from 'react'
 import '../Assets/Styles/Searchbar.css';
-
  const Searchbar = () => {
  const [searchInput, setSearchInput] = useState("");
 
@@ -42,8 +41,6 @@ return <div>
 </table>
 
 </div>
-
-
 };
 
 export default Searchbar;

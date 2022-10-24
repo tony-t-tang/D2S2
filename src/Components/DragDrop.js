@@ -10,17 +10,21 @@ function getStyles() {
 
 
 export default function DragDrop() {
+	
 	let uuid = uuidv4();
 	let PictureList = require('../Data/PictureList.json');
 
 	return (
+		<div className = 'scrollbar'>
 		<Box
 			sx={{
 				width: 200,
 				height: 502,
 				backgroundColor: '#D9D9D9',
 				border: 1,
+				
 			}}
+			
 		>
 			Drag & Drop
 			{PictureList.map((picture) => {
@@ -35,5 +39,6 @@ export default function DragDrop() {
 				);
 			})}
 		</Box>
+		</div>
 	);
 }
