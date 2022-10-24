@@ -1,7 +1,6 @@
 import React, {useState} from 'react'
 import '../Assets/Styles/Searchbar.css';
-const Search = () => {
-
+const Searchbar = () => {
  const [searchInput, setSearchInput] = useState("");
 
  const Icons = [
@@ -29,7 +28,6 @@ return <div>
    placeholder="Search..."
    onChange={handleChange}
    value={searchInput} 
-   
    />
 
 <table>
@@ -47,4 +45,4 @@ return <div>
 
 };
 
-export default Search;
+export default Searchbar;
