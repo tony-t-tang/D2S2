@@ -47,11 +47,8 @@ export default function Canvas() {
 			drop: (item, monitor) => {
 				const delta = monitor.getDifferenceFromInitialOffset();
 
-				let left = window.event.clientX - window.event.target.offsetLeft;
-				// Math.round(item.left + delta.x);
-				let top = window.event.clientY - window.event.target.offsetTop;
-					
-						//Math.round(item.top + delta.y);
+				let left = Math.round(item.left + delta.x);
+				let top = Math.round(item.top + delta.y);
 
 				console.log(item);
 
