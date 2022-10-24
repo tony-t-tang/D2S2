@@ -5,6 +5,7 @@ import Canvas from './Components/Canvas';
 import Suggestion from './Components/Suggestion';
 import TopPicks from './Components/TopPicks';
 import Toolbar from './Components/Toolbar';
+import Searchbar from './Components/Search';
 import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
 
@@ -15,6 +16,7 @@ function MainFrame() {
 				<PSDoodle></PSDoodle>
 				<div className='idk'>
 					<div>
+						<Searchbar/>
 						<Toolbar />
 						<DragDrop />
 					</div>
