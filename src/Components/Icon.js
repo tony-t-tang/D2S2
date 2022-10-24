@@ -1,9 +1,8 @@
 import { useDrag } from 'react-dnd';
-// import { getEmptyImage } from 'react-dnd-html5-backend';
-// import { useEffect } from 'react';
 
 export default function Icon({id, src}) {
 	//FIX DROP LOCATION ON MOUSE
+	// Referencing the component before its created
 	let left = window.event.clientX - window.event.target.offsetLeft;
 	let top = window.event.clientY - window.event.target.offsetTop;
 

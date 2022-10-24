@@ -8,10 +8,9 @@ function getStyles() {
 	};
 }
 
-
 export default function DragDrop() {
 	let PictureList = require('../Data/PictureList.json');
-
+	
 	return (
 		<Box
 			sx={{
