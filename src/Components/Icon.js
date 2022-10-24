@@ -13,12 +13,12 @@ export default function Icon({id, src}) {
 		() => ({
 		
 			type: 'image',
-			item: { id, src, left, top},
+			item: { id, src},
 			collect: (monitor) => ({
 				isDragging: monitor.isDragging(),
 			}),
 		}),
-		[id, src, left, top]
+		[id, src]
 	);
 
 	return (
