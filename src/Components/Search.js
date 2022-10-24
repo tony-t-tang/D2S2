@@ -1,4 +1,3 @@
-import { SignalCellularConnectedNoInternet0BarSharp } from '@mui/icons-material';
 import React, {useState} from 'react'
 import '../Assets/Styles/Searchbar.css';
 const Search = () => {
@@ -7,8 +6,8 @@ const Search = () => {
 
  const Icons = [
   
-  { name: "Search", IconID: "1" },
-  { name: "Square", IconID: "2" },
+  { name: "Back", IconID: "1" },
+  { name: "Profile", IconID: "2" },
 
 ];
 
@@ -29,22 +28,16 @@ return <div>
    type="search"
    placeholder="Search..."
    onChange={handleChange}
-   value={searchInput} />
+   value={searchInput} 
+   
+   />
 
 <table>
-  <tr>
-    <th>Icon</th>
-    <th>Name</th>
-  </tr>
+ 
 
 {Icons.map((Icons, index) => {
 
-<div>
-  <tr>
-    <td>{Icons.name}</td>
-    <td>{Icons.IconID}</td>
-  </tr>
-</div>
+
 
 })}
 </table>
