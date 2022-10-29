@@ -1,5 +1,5 @@
 import './Assets/Styles/MainFrame.css';
-import DragDrop from './Components/DragDrop';
+import DragDrop from './Components/DragDropList';
 import Canvas from './Components/Canvas';
 import Suggestion from './Components/Suggestion';
 import TopPicks from './Components/TopPicks';

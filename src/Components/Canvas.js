@@ -5,28 +5,16 @@ import { Box } from '@mui/material';
 import update from 'immutability-helper';
 import DraggableIcon from './DraggableIcon';
 
-function getStyles(left, top, isDragging) {
-	const transform = `translate3d(${left}px, ${top}px, 0)`;
-	return {
-		position: 'absolute',
-		transform,
-		WebkitTransform: transform,
-		opacity: isDragging ? 0 : 1,
-		height: isDragging ? 0 : '',
-	};
-}
-
 export default function Canvas() {
-	let PictureList = require('../Data/PictureList.json');
 	const [canvas, setCanvas] = useState([]);
 
-	//Allows user to move icons that are placed on canvas
+	//Updates the icon's position
 	const moveIcon = useCallback(
 		(id, left, top) => {
 			setCanvas(
 				update(canvas, {
 					[id]: {
-						$merge: { left, top },
+						$merge: { left: left, top: top },
 					},
 				})
 			);
@@ -34,33 +22,29 @@ export default function Canvas() {
 		[canvas]
 	);
 
-	//Adds icon to canvas array
-	const addIconToCanvas = (id) => {
-		const iconList = PictureList.filter((picture) => (id === picture.id));
-		setCanvas((canvas) => [...canvas, iconList[0]]);
-	};
-
 	//Command for when user drops icon onto canvas
 	const [, drop] = useDrop(
 		() => ({
 			accept: 'image',
 			drop: (item, monitor) => {
 				const delta = monitor.getDifferenceFromInitialOffset();
+				const iconList = canvas.filter((icon) => item.id === icon.id);
+
+				if (iconList.length < 1) {
+					setCanvas((canvas) => [...canvas, item]);
+				}
 
 				let left = Math.round(item.left + delta.x);
 				let top = Math.round(item.top + delta.y);
-					
-				console.log(item);
-				console.log(left);
-				console.log(top);
 
-				addIconToCanvas(item.id);
+				console.log(canvas);
+
 				moveIcon(item.id, left, top);
 
 				return undefined;
 			},
 		}),
-		[]
+		[canvas]
 	);
 
 	return (
@@ -75,13 +59,16 @@ export default function Canvas() {
 			}}
 		>
 			<div>Canvas</div>
-			{Object.keys(canvas).map((key) => (
-				<DraggableIcon
-					key={key}
-					id={key}
-					{...canvas[key]}
-				/>
-			))}
+			{canvas.map((item) => {
+				return (
+					<DraggableIcon
+						id={item.id}
+						src={item.src}
+						left={item.left}
+						top={item.top}
+					/>
+				);
+			})}
 		</Box>
 	);
 }

@@ -7,10 +7,10 @@
 ::-webkit-scrollbar {
     width: 10px;
   }
-  
   /* Track */
   ::-webkit-scrollbar-track {
     background-color: #D9D9D9;
+
   }
   
   /* Handle */
@@ -22,3 +22,8 @@
   ::-webkit-scrollbar-thumb:hover {
     background: #555;
   }
+
+.search-bar {
+  direction: ltr;
+  padding: 10px;
+}

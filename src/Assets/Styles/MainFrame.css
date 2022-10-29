@@ -1,8 +1,9 @@
 .PSDoodle{
     position: relative;
     padding-left: 50%;
-
     font-weight: bold;
+    font-family: Helvetica;
+    font-size: 20px;
 }
 .main-frame{
     color:white;

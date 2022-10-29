@@ -1,36 +1,26 @@
 import React, { useState } from 'react';
-
+import JSONDATA from '../Data/ICONSOG.json';
 import '../Assets/Styles/Searchbar.css';
 
+//Search Bar
 const Search = () => {
 	const [searchInput, setSearchInput] = useState('');
 
-	const Icons = [
-		{ name: 'Back', IconID: '1' },
-		{ name: 'Profile', IconID: '2' },
-	];
-
+	//Takes input from
 	const handleChange = (e) => {
 		e.preventDefault();
 		setSearchInput(e.target.value);
+		console.log(e.target.value);
 	};
 
-	if (searchInput.length > 0) {
-		Icons.filter((Icons) => {
-			return Icons.name.match(searchInput);
-		});
-	}
-
 	return (
-		<div>
-			<input
-				type='search'
-				placeholder='Search...'
-				onChange={handleChange}
-				value={searchInput}
-			/>
-
-			<table>{Icons.map((Icons, index) => {})}</table>
+		<div className='search-bar'>
+			<div>
+				<input
+					type='search'
+					placeholder='Search...'
+				/>
+			</div>
 		</div>
 	);
 };

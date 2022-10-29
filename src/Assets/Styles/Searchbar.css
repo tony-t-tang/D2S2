@@ -1,4 +1,4 @@
-.Searchbar{
-    background-color: red;
-    color: red;
+.search-bar{
+    direction: ltr;
+    padding: 10px;
 }

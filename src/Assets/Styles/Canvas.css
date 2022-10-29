@@ -1,1 +1,6 @@
-
+.icon {
+    border: solid;
+    border-color: blue;
+    margin: 500px;
+    padding: 500px;
+}

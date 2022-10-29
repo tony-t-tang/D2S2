@@ -1,7 +1,9 @@
 import { useDrag } from 'react-dnd';
 
-export default function Icon({id, src, left, top}) {
+export default function Icon({ id, src, left, top }) {
 	//FIX DROP LOCATION ON MOUSE
+
+	
 
 	const [, drag] = useDrag(
 		() => ({
@@ -18,8 +20,8 @@ export default function Icon({id, src, left, top}) {
 		<img
 			ref={drag}
 			type='image/png'
-			src={src}
-			width='150px'
+			src={require("../Assets/Icons/" + src)}
+			width='50px'
 			alt='error'
 		/>
 	);
