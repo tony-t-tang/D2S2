@@ -1,4 +1,4 @@
-import '../Assets/Styles/DragDrop.css';
+import '../Assets/Styles/DragDropList.css';
 import { useState } from 'react';
 import { Box, Grid } from '@mui/material';
 import Icon from './Icon';
@@ -11,18 +11,16 @@ function getStyles() {
 }
 
 export default function DragDrop() {
-	const [searchTerm, setSearchTerm] = useState('');
+	const [search, setSearch] = useState('');
 
-	//Takes input from search
 	const handleChange = (e) => {
-		e.preventDefault();
-		setSearchTerm(e.target.value);
+		setSearch(e.target.value);
 		console.log(e.target.value);
 	};
 
 	return (
 		<Box
-			className='InsideDragDrop'
+			className='box-frame'
 			sx={{
 				width: 200,
 				height: 524,
@@ -41,11 +39,24 @@ export default function DragDrop() {
 				</div>
 			</div>
 			<Grid
+				className='icons-grid'
 				container
 				spacing={2}
 				columns={{ xs: 4, sm: 8, md: 12 }}
 			>
-				{ICONS.map((picture) => {
+				{ICONS.filter((picture) => {
+					if (search === '') {
+						return picture;
+					} else {
+						for(let i = 0; i < picture.name.length; i++) 
+						{
+							if(picture.name[i].toLowerCase().includes(search.toLowerCase()))
+							{
+								return picture;
+							}
+						}
+					}
+				}).map((picture, key) => {
 					return (
 						<Grid
 							item
@@ -54,10 +65,12 @@ export default function DragDrop() {
 							<Icon
 								id={picture.id}
 								src={picture.src}
-								left={-100}
-								top={100}
 								style={getStyles()}
+								key={key}
 							/>
+							<p>
+								{picture.name[0]}
+							</p>
 						</Grid>
 					);
 				})}

@@ -1,5 +1,5 @@
 import '../Assets/Styles/Canvas.css';
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import { useDrop } from 'react-dnd';
 import { Box } from '@mui/material';
 import update from 'immutability-helper';
@@ -8,7 +8,6 @@ import DraggableIcon from './DraggableIcon';
 export default function Canvas() {
 	const [canvas, setCanvas] = useState([]);
 
-	//Updates the icon's position
 	const moveIcon = useCallback(
 		(id, left, top) => {
 			setCanvas(
@@ -22,21 +21,26 @@ export default function Canvas() {
 		[canvas]
 	);
 
-	//Command for when user drops icon onto canvas
 	const [, drop] = useDrop(
 		() => ({
 			accept: 'image',
 			drop: (item, monitor) => {
 				const delta = monitor.getDifferenceFromInitialOffset();
+
 				const iconList = canvas.filter((icon) => item.id === icon.id);
+				let left;
+				let top;
 
 				if (iconList.length < 1) {
 					setCanvas((canvas) => [...canvas, item]);
+					left = monitor.getClientOffset().x;
+					top = monitor.getClientOffset().y;
+				} else {
+					left = Math.round(item.left + delta.x);
+					top = Math.round(item.top + delta.y);
 				}
-
-				let left = Math.round(item.left + delta.x);
-				let top = Math.round(item.top + delta.y);
-
+				console.log(left);
+				console.log(top);
 				console.log(canvas);
 
 				moveIcon(item.id, left, top);
@@ -56,6 +60,7 @@ export default function Canvas() {
 				backgroundColor: '#D9D9D9',
 				border: 1,
 				position: 'relative',
+			
 			}}
 		>
 			<div>Canvas</div>

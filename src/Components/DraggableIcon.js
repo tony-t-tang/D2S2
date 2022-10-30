@@ -11,7 +11,8 @@ function getStyles(left, top, isDragging) {
 	};
 }
 
-export default function DraggableIcon({ id, src, left, top }) {
+export default function DraggableIcon({ id, src , left , top}) {
+
 	const [{ isDragging }, drag] = useDrag(
 		() => ({
 			type: 'image',
@@ -26,7 +27,7 @@ export default function DraggableIcon({ id, src, left, top }) {
 	return (
 		<img
 			ref={drag}
-			src={require("../Assets/Icons/" + src)}
+			src={require('../Assets/Icons/' + src)}
 			width='50px'
 			style={getStyles(left, top, isDragging)}
 			alt='error'
