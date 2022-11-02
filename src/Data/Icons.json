@@ -92,11 +92,6 @@
     {
         "id":20,
         "src":"20.png",
-        "name":["Text Button", "Button"]
-    },
-    {
-        "id":21,
-        "src":"21.png",
         "name":["Image", "Background Image"]
     }
 ]

@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { Box, Grid } from '@mui/material';
 import Icon from './Icon';
 import ICONS from '../Data/ICONS.json';
+import { v4 as uuidv4 } from 'uuid';
 
 function getStyles() {
 	return {
@@ -10,12 +11,11 @@ function getStyles() {
 	};
 }
 
-export default function DragDrop() {
+export default function DragDropList() {
 	const [search, setSearch] = useState('');
 
 	const handleChange = (e) => {
 		setSearch(e.target.value);
-		console.log(e.target.value);
 	};
 
 	return (
@@ -44,33 +44,35 @@ export default function DragDrop() {
 				spacing={2}
 				columns={{ xs: 4, sm: 8, md: 12 }}
 			>
-				{ICONS.filter((picture) => {
+				{ICONS.filter((icon) => {
 					if (search === '') {
-						return picture;
+						return icon;
 					} else {
-						for(let i = 0; i < picture.name.length; i++) 
-						{
-							if(picture.name[i].toLowerCase().includes(search.toLowerCase()))
-							{
-								return picture;
+						for (let i = 0; i < icon.name.length; i++) {
+							if (
+								icon.name[i]
+									.toLowerCase()
+									.includes(search.toLowerCase())
+							) {
+								return icon;
 							}
 						}
 					}
-				}).map((picture, key) => {
+					return undefined;
+				}).map((icon) => {
 					return (
 						<Grid
 							item
 							xs={6}
 						>
 							<Icon
-								id={picture.id}
-								src={picture.src}
+								uuid={uuidv4()}
+								id={icon.id}
+								src={icon.src}
+								name={icon.name}
 								style={getStyles()}
-								key={key}
 							/>
-							<p>
-								{picture.name[0]}
-							</p>
+							<p>{icon.name[0]}</p>
 						</Grid>
 					);
 				})}

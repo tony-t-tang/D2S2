@@ -11,17 +11,16 @@ function getStyles(left, top, isDragging) {
 	};
 }
 
-export default function DraggableIcon({ id, src , left , top}) {
-
+export default function DraggableIcon({ uuid, id, src, name, left, top }) {
 	const [{ isDragging }, drag] = useDrag(
 		() => ({
 			type: 'image',
-			item: { id, src, left, top },
+			item: { uuid, id, src, name, left, top },
 			collect: (monitor) => ({
 				isDragging: monitor.isDragging(),
 			}),
 		}),
-		[id, src, left, top]
+		[uuid, id, src, name, left, top]
 	);
 
 	return (
