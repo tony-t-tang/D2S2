@@ -9,9 +9,6 @@ import { render } from '@testing-library/react';
 
 export default function Canvas() {
 	const [canvas, setCanvas] = useState([]);
-	const [index, setIndex] = useState(0)
-	const [left, setLeft] = useState(0)
-	const [top, setTop] = useState(0)
 
 	const moveIcon = useCallback(
 		(index, left, top) => {
@@ -66,31 +63,14 @@ export default function Canvas() {
 
 				// let newUUIDV4 = uuidv4();
 				// updateUUID(index, newUUIDV4);
-				// let newUUIDV4 = uuidv4();
-				// updateUUID(index, newUUIDV4);
 				moveIcon(index, left, top);
 
-				setIndex(index)
-				setLeft(left)
-				setTop(top)
-				console.log(index)
-				// console.log(iconList)
-				// console.log(canvas)
-	
 				return undefined;
 			},
 		}),
 		[canvas]
 	);
 
-	// useEffect(() => {
-	// 	if(canvas.length > 0)
-	// 	{
-	// 		// moveIcon(index, left, top);
-	// 		console.log(canvas)
-	// 	}
-	// }, [canvas[index].left])
-		
 	return (
 		<Box
 			ref={drop}
