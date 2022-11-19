@@ -1,4 +1,5 @@
 import { useDrag } from 'react-dnd';
+
 function getStyles(left, top, isDragging) {
 	const transform = `translate3d(${left}px, ${top}px, 0)`;
 	return {
@@ -10,25 +11,24 @@ function getStyles(left, top, isDragging) {
 	};
 }
 
-export default function DraggableIcon({ id, src, left, top }) {
-	
-    const [{ isDragging }, drag] = useDrag(
+export default function DraggableIcon({ uuid, id, src, name, left, top }) {
+	const [{ isDragging }, drag] = useDrag(
 		() => ({
 			type: 'image',
-			item: { id, src, left, top },
+			item: { uuid, id, src, name, left, top },
 			collect: (monitor) => ({
 				isDragging: monitor.isDragging(),
 			}),
 		}),
-		[id, src, left, top]
+		[uuid, id, src, name, left, top]
 	);
 
 	return (
 		<img
 			ref={drag}
-			src={src}
-			width='150px'
-            style={getStyles(left, top, isDragging)}
+			src={require('../Assets/Icons/' + src)}
+			width='50px'
+			style={getStyles(left, top, isDragging)}
 			alt='error'
 		/>
 	);

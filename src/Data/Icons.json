@@ -1,17 +1,97 @@
 [
     {
-        "id": 1,
-        "uuid": "id", 
-        "type": "menu",
-        "height": 1,
-        "width": 1,
-        "start-postion": 1,
-        "end-position": 1
+        "id":0,
+        "src":"0.png",
+        "name":["Arrow Backward", "Back", "Left", "Previous"]
     },
     {
-        "id": 2
+        "id":1,
+        "src":"1.png",
+        "name":["Close", "Cancel", "Clear", "Delete"]
     },
     {
-        "id": 3
+        "id":2,
+        "src":"2.png",
+        "name":["Avatar", "Person", "Account"]
+    },
+    {
+        "id":3,
+        "src":"3.png",
+        "name":["Checkbox", "Check", "Ok", "Done"]
+    },
+    {
+        "id":4,
+        "src":"4.png",
+        "name":["Arrow Forward", "Forward", "Next", "Right"]
+    },
+    {
+        "id":5,
+        "src":"5.png",
+        "name":["Menu", "Hamburger", "Drawer", "Navigation"]
+    },
+    {
+        "id":6,
+        "src":"6.png",
+        "name":["Play", "Play Arrow", "Pause", "Video"]
+    },
+    {
+        "id":7,
+        "src":"7.png",
+        "name":["Plus", "Add", "Create", "Expand", "New Tab"]
+    },
+    {
+        "id":8,
+        "src":"8.png",
+        "name":["Search", "Find", "Magnifying Glass"]
+    },
+    {
+        "id":9,
+        "src":"9.png",
+        "name":["Setting", "Gear", "Preference", "Option"]
+    },
+    {
+        "id":10,
+        "src":"10.png",
+        "name":["Share", "Menu"]
+    },
+    {
+        "id":11,
+        "src":"11.png",
+        "name":["Slider"]
+    },
+    {
+        "id":12,
+        "src":"12.png",
+        "name":["Switch", "On", "Off"]
+    },
+    {
+        "id":13,
+        "src":"13.png",
+        "name":["Container"]
+    },
+    {
+        "id":14,
+        "src":"14.png",
+        "name":["Star", "Rate", "Rating", "Favorite"]
+    },
+    {
+        "id":15,
+        "src":"15.png",
+        "name":["Home", "House", "Building"]
+    },
+    {
+        "id":16,
+        "src":"16.png",
+        "name":["Camera", "Photo", "Instagram"]
+    },
+    {
+        "id":17,
+        "src":"17.png",
+        "name":["Envelope", "Email", "Inbox", "Share"]
+    },
+    {
+        "id":20,
+        "src":"20.png",
+        "name":["Image", "Background Image"]
     }
 ]

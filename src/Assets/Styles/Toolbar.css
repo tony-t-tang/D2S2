@@ -1,7 +1,7 @@
-.Icons > button {
-    margin: 5px;
+.icons > button {
     top: 0.3px;
     position: relative;
     cursor: pointer;
-    
+    padding: 8px;
+    margin: 1px;
 }
