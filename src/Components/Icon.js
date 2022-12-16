@@ -1,18 +1,17 @@
 import { useDrag } from 'react-dnd';
 
 export default function Icon({ uuid, id, src, name }) {
-	//FIX DROP LOCATION ON MOUSE
 	let left = 0;
 	let top = 0;
 
 	const [, drag] = useDrag(
 		() => ({
 			type: 'image',
-			item: {uuid, id, src, left, top, name },
+			item: { uuid, id, src, left, top, name },
 		}),
 		[uuid, id, src, left, top, name]
 	);
-	
+
 	return (
 		<img
 			ref={drag}
