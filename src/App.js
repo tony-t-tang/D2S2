@@ -1,4 +1,4 @@
-import './Assets/Styles/MainFrame.css';
+import './Assets/Styles/App.css';
 import DragDrop from './Components/DragDropList';
 import Canvas from './Components/Canvas';
 import Suggestion from './Components/Suggestion';
@@ -6,13 +6,28 @@ import TopPicks from './Components/TopPicks';
 import Toolbar from './Components/Toolbar';
 import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
+import { createContext, useState } from 'react';
 
-function MainFrame() {
+export const CanvasContext = createContext();
+
+function App() {
+	const [canvas, setCanvas] = useState([]);
+
+	const context = {
+		actions: {
+			setCanvas,
+		},
+		state: {
+			canvas,
+		},
+	};
+
 	return (
 		<DndProvider backend={HTML5Backend}>
-			<div className='main-frame'>
+			<div className='background'>
 				<div className='PSDoodle'>PSDoodle</div>
-				<div className='idk'>
+				<CanvasContext.Provider value={context}>
+				<div className='main-container'>
 					<div>
 						<Toolbar />
 						<DragDrop />
@@ -21,9 +36,10 @@ function MainFrame() {
 					<Suggestion />
 					<TopPicks />
 				</div>
+				</CanvasContext.Provider>
 			</div>
 		</DndProvider>
 	);
 }
 
-export default MainFrame;
+export default App;

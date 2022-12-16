@@ -1,69 +1,55 @@
 import '../Assets/Styles/Canvas.css';
-import { useState, useCallback } from 'react';
+import { CanvasContext } from '../App';
+import { useState, useContext } from 'react';
 import { useDrop } from 'react-dnd';
 import { Box } from '@mui/material';
-import update from 'immutability-helper';
-import DraggableIcon from './DraggableIcon';
+import CanvasComponent from './CanvasComponent';
+import { v4 as uuidv4 } from 'uuid';
+
+
+const style = {
+	width: 500,
+	height: 565,
+	backgroundColor: '#D9D9D9',
+	border: 1,
+	position: 'relative',
+};
 
 export default function Canvas() {
-	const [canvas, setCanvas] = useState([]);
+	const {state, actions} = useContext(CanvasContext)
 
-	//Updates the icon's position
-	const moveIcon = useCallback(
-		(id, left, top) => {
-			setCanvas(
-				update(canvas, {
-					[id]: {
-						$merge: { left: left, top: top },
-					},
-				})
-			);
-		},
-		[canvas]
-	);
-
-	//Command for when user drops icon onto canvas
 	const [, drop] = useDrop(
 		() => ({
 			accept: 'image',
-			drop: (item, monitor) => {
-				const delta = monitor.getDifferenceFromInitialOffset();
-				const iconList = canvas.filter((icon) => item.id === icon.id);
+			drop: (item) => {
+				const iconList = state.canvas.filter(
+					(icon) => item.uuid === icon.uuid
+				);
 
 				if (iconList.length < 1) {
-					setCanvas((canvas) => [...canvas, item]);
+					actions.setCanvas([...state.canvas, item]);
 				}
-
-				let left = Math.round(item.left + delta.x);
-				let top = Math.round(item.top + delta.y);
-
-				console.log(canvas);
-
-				moveIcon(item.id, left, top);
 
 				return undefined;
 			},
 		}),
-		[canvas]
+		[state.canvas]
 	);
 
 	return (
 		<Box
 			ref={drop}
-			sx={{
-				width: 500,
-				height: 565,
-				backgroundColor: '#D9D9D9',
-				border: 1,
-				position: 'relative',
-			}}
+			sx={style}
+			id='container'
 		>
 			<div>Canvas</div>
-			{canvas.map((item) => {
+			{state.canvas.map((item) => {
 				return (
-					<DraggableIcon
+					<CanvasComponent
+						uuid={item.uuid}
 						id={item.id}
 						src={item.src}
+						name={item.name}
 						left={item.left}
 						top={item.top}
 					/>

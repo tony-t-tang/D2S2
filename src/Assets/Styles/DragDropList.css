@@ -1,5 +1,5 @@
 /*scroll*/
-.InsideDragDrop{
+.box-frame{
     overflow:scroll;
     overflow-x:hidden;
     direction: rtl;
@@ -23,7 +23,11 @@
     background: #555;
   }
 
-.search-bar {
+.box-frame .search-bar {
   direction: ltr;
   padding: 10px;
+}
+
+.box-frame .icons-grid {
+  direction: ltr; 
 }

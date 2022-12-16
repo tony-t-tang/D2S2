@@ -16,6 +16,7 @@
     "react-dnd": "^16.0.1",
     "react-dnd-html5-backend": "^16.0.1",
     "react-dom": "^18.2.0",
+    "react-rnd": "^10.3.7",
     "react-scripts": "5.0.1",
     "styled-components": "^5.3.6",
     "uuid": "^9.0.0",

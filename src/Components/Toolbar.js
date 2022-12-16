@@ -1,17 +1,15 @@
-import React, { useState } from 'react';
-import '../Assets/Styles/Toolbar.css';
+import React, { useMemo, useState } from 'react';
+import '../Assets/Styles/toolbar.css';
 import { Box } from '@mui/material';
-import StopIcon from '@mui/icons-material/PanTool';
 import RedoIcon from '@mui/icons-material/Redo';
 import UndoIcon from '@mui/icons-material/Undo';
-import ResizeIcon from '@mui/icons-material/AspectRatio';
 import IconButton from '@mui/material/IconButton';
+import TextFieldsIcon from '@mui/icons-material/TextFields';
 
 export default function Toolbar() {
-	const [click, setClick] = useState('');
 
 	return (
-		<div className='Toolbar'>
+		<div className='toolbar'>
 			<Box
 				sx={{
 					width: 202,
@@ -22,16 +20,13 @@ export default function Toolbar() {
 			>
 				<div className='icons'>
 					<IconButton sx={{ color: 'black' }}>
-						<StopIcon />
+						<TextFieldsIcon />
 					</IconButton>
 					<IconButton sx={{ color: 'black' }}>
 						<RedoIcon />
 					</IconButton>
 					<IconButton sx={{ color: 'black' }}>
 						<UndoIcon />
-					</IconButton>
-					<IconButton sx={{ color: 'black' }}>
-						<ResizeIcon />
 					</IconButton>
 				</div>
 			</Box>
