@@ -26,7 +26,7 @@ function App() {
 		const defaultData = {
 			type: type,
 			src: type === 'TEXT' ? null : src,
-			id: `${type}__${Date.now()}__${canvas.length}`,
+			id: `${type}__${Date.now()}`,
 			position: {
 				top: 50,
 				left: 50,
@@ -46,6 +46,7 @@ function App() {
 	const deleteElement = useCallback(() => {
 		setCanvas([
 			...canvas.filter((data) => {
+				console.log(data);
 				if (data.id && activeSelection.has(data.id)) {
 					activeSelection.delete(data.id);
 					return false;
@@ -53,7 +54,7 @@ function App() {
 				return true;
 			}),
 		]);
-		setActiveSelection(new Set(activeSelection));
+		setActiveSelection(new Set());
 	}, [activeSelection, canvas]);
 
 	const context = {
@@ -70,16 +71,30 @@ function App() {
 		},
 	};
 
+	const handleKeyDown = useCallback(
+		(event) => {
+			if (
+				(event.key === 'Delete' || event.key === 'Backspace') &&
+				activeSelection.size > 0
+			) {
+				deleteElement();
+			}
+		},
+		[deleteElement, activeSelection]
+	);
+
 	const handleMouseDown = useCallback((event) => {
 		setActiveSelection(new Set());
 	}, []);
 
 	useEffect(() => {
+		document.addEventListener('keydown', handleKeyDown);
 		document.addEventListener('mousedown', handleMouseDown);
 		return () => {
+			document.removeEventListener('keydown', handleKeyDown);
 			document.removeEventListener('mousedown', handleMouseDown);
 		};
-	}, [handleMouseDown]);
+	}, [handleKeyDown, handleMouseDown]);
 
 	return (
 		<DndProvider backend={HTML5Backend}>
