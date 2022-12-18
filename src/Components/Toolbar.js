@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import '../Assets/Styles/toolbar.css';
+import '../Assets/Styles/Toolbar.css';
 import { Box } from '@mui/material';
 import RedoIcon from '@mui/icons-material/Redo';
 import UndoIcon from '@mui/icons-material/Undo';
@@ -8,7 +8,7 @@ import TextFieldsIcon from '@mui/icons-material/TextFields';
 import { CanvasContext } from '../App';
 
 export default function Toolbar() {
-	const { actions, state } = useContext(CanvasContext);
+	const { actions } = useContext(CanvasContext);
 
 	return (
 		<div className='toolbar'>

@@ -1,6 +1,7 @@
 import React, { useState, useRef, useContext } from 'react';
 import { CanvasContext } from '../App';
 import { Rnd } from 'react-rnd';
+import ImageElement from './ImageElement';
 
 // const componentMap = (key) = {
 // 	TEXT: TextElement,
@@ -118,7 +119,7 @@ export default function CanvasComponent(props) {
 			lockAspectRatio='true'
 			bounds='parent'
 		>
-			<div style={imageContainer(img)}></div>
+			<ImageElement src={src}></ImageElement>
 		</Rnd>
 	);
 }
