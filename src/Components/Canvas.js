@@ -21,6 +21,7 @@ export default function Canvas() {
 			accept: 'image',
 			drop: (item) => {
 				actions.addElement('IMAGE', item.src);
+				console.log(state.canvas)
 				return undefined;
 			},
 		}),

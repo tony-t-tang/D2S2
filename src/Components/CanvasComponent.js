@@ -2,27 +2,16 @@ import React, { useState, useRef, useContext } from 'react';
 import { CanvasContext } from '../App';
 import { Rnd } from 'react-rnd';
 import ImageElement from './ImageElement';
+import TextElement from './TextElement';
 
-// const componentMap = (key) = {
-// 	TEXT: TextElement,
-// 	IMAGE: ImageElement,
-// };
 
-function imageContainer(img) {
+const getEnableResize = (type) => {
 	return {
-		backgroundImage: `url(${img})`,
-		backgroundSize: 'contain',
-		width: '100%',
-		height: '100%',
-		backgroundRepeat: 'no-repeat',
-	};
-}
-
-const getEnableResize = () => {
-	return {
+		bottom: type === 'TEXT',
 		bottomLeft: true,
 		bottomRight: true,
 
+		top: type === 'TEXT',
 		topLeft: true,
 		topRight: true,
 
@@ -37,8 +26,6 @@ export default function CanvasComponent(props) {
 	const [showGrids, setShowGrids] = useState(false);
 	const isDragged = useRef(false);
 
-	var img = require(`../Assets/Icons/${src}`);
-
 	const style = {
 		outline: 'none',
 		border: `2px solid ${
@@ -50,20 +37,13 @@ export default function CanvasComponent(props) {
 		}`,
 	};
 
-	// const getComponent = () => {
-	// 	const Component = type && componentMap[type];
-	// 	if (!Component || !id) return null;
-	// 	return (
-	// 		<Component
-	// 			key={id}
-	// 			id={id}
-	// 			type={type}
-	// 			position={position}
-	// 			dimension={dimension}
-	// 			content={content}
-	// 		/>
-	// 	);
-	// };
+	const getComponent = () => {
+		return type === 'TEXT' ? (
+			<TextElement content={content} />
+		) : (
+			<ImageElement src={src} />
+		);
+	};
 
 	const onClick = () => {
 		state.activeSelection.clear();
@@ -115,11 +95,11 @@ export default function CanvasComponent(props) {
 			onMouseEnter={onMouseEnter}
 			onMouseLeave={onMouseLeave}
 			onClick={onClick}
-			enableResizing={getEnableResize()}
-			lockAspectRatio='true'
+			enableResizing={getEnableResize(type)}
+			lockAspectRatio={type === 'IMAGE'}
 			bounds='parent'
 		>
-			<ImageElement src={src}></ImageElement>
+			{getComponent()}
 		</Rnd>
 	);
 }
