@@ -49,20 +49,20 @@ export default function CanvasComponent(props) {
 		}`,
 	};
 
-	const getComponent = () => {
-		const Component = type && componentMap[type];
-		if (!Component || !id) return null;
-		return (
-			<Component
-				key={id}
-				id={id}
-				type={type}
-				position={position}
-				dimension={dimension}
-				content={content}
-			/>
-		);
-	};
+	// const getComponent = () => {
+	// 	const Component = type && componentMap[type];
+	// 	if (!Component || !id) return null;
+	// 	return (
+	// 		<Component
+	// 			key={id}
+	// 			id={id}
+	// 			type={type}
+	// 			position={position}
+	// 			dimension={dimension}
+	// 			content={content}
+	// 		/>
+	// 	);
+	// };
 
 	const onClick = () => {
 		state.activeSelection.clear();

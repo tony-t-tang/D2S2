@@ -23,6 +23,7 @@ export default function Toolbar() {
 				<div className='icons'>
 					<IconButton
 						sx={{ color: 'black' }}
+						//Uses image container so thats why it breaks
 						onClick={() => actions.addElement('TEXT', '')}
 					>
 						<TextFieldsIcon />
