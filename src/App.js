@@ -28,8 +28,8 @@ function App() {
 			src: type === 'TEXT' ? null : src,
 			id: `${type}__${Date.now()}__${canvas.length}`,
 			position: {
-				top: 0,
-				left: 0,
+				top: 50,
+				left: 50,
 			},
 			dimension: {
 				width: type === 'TEXT' ? '150' : '50',
