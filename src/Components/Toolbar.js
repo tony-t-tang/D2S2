@@ -1,12 +1,14 @@
-import React, { useMemo, useState } from 'react';
+import React, { useContext } from 'react';
 import '../Assets/Styles/toolbar.css';
 import { Box } from '@mui/material';
 import RedoIcon from '@mui/icons-material/Redo';
 import UndoIcon from '@mui/icons-material/Undo';
 import IconButton from '@mui/material/IconButton';
 import TextFieldsIcon from '@mui/icons-material/TextFields';
+import { CanvasContext } from '../App';
 
 export default function Toolbar() {
+	const { actions, state } = useContext(CanvasContext);
 
 	return (
 		<div className='toolbar'>
@@ -19,7 +21,10 @@ export default function Toolbar() {
 				}}
 			>
 				<div className='icons'>
-					<IconButton sx={{ color: 'black' }}>
+					<IconButton
+						sx={{ color: 'black' }}
+						onClick={() => actions.addElement('TEXT', '')}
+					>
 						<TextFieldsIcon />
 					</IconButton>
 					<IconButton sx={{ color: 'black' }}>
