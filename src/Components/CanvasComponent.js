@@ -4,14 +4,13 @@ import { Rnd } from 'react-rnd';
 import ImageElement from './ImageElement';
 import TextElement from './TextElement';
 
-
-const getEnableResize = (type) => {
+const getEnableResize = () => {
 	return {
-		bottom: type === 'TEXT',
+		bottom: true,
 		bottomLeft: true,
 		bottomRight: true,
 
-		top: type === 'TEXT',
+		top: true,
 		topLeft: true,
 		topRight: true,
 
@@ -23,11 +22,13 @@ const getEnableResize = (type) => {
 export default function CanvasComponent(props) {
 	const { actions, state } = useContext(CanvasContext);
 	const { dimension, position, content, id, type, src } = props;
+	const [readOnly, setReadOnly] = useState(true);
 	const [showGrids, setShowGrids] = useState(false);
 	const isDragged = useRef(false);
 
 	const style = {
 		outline: 'none',
+		overflow: 'hidden',
 		border: `2px solid ${
 			(id && state?.activeSelection.has(id)) ||
 			showGrids ||
@@ -39,16 +40,14 @@ export default function CanvasComponent(props) {
 
 	const getComponent = () => {
 		return type === 'TEXT' ? (
-			<TextElement content={content} />
+			<TextElement
+				content={content}
+				id={id}
+				readOnly={readOnly}
+			/>
 		) : (
 			<ImageElement src={src} />
 		);
-	};
-
-	const onClick = () => {
-		state.activeSelection.clear();
-		state.activeSelection.add(id);
-		actions.setActiveSelection(new Set(state.activeSelection));
 	};
 
 	const onMouseEnter = () => {
@@ -57,6 +56,36 @@ export default function CanvasComponent(props) {
 
 	const onMouseLeave = () => {
 		setShowGrids(false);
+	};
+
+	const onBlur = (event) => {
+		if (event.currentTarget.contains(event.relatedTarget)) {
+			return;
+		}
+		setReadOnly(true);
+	};
+
+	const onFocus = () => {
+		if (id) {
+			state.activeSelection.clear();
+			state.activeSelection.add(id);
+			actions.setActiveSelection(new Set(state.activeSelection));
+		}
+	};
+
+	const onClick = () => {
+		state.activeSelection.clear();
+		state.activeSelection.add(id);
+		actions.setActiveSelection(new Set(state.activeSelection));
+	};
+
+	const onDoubleClick = () => {
+		if (!readOnly) return;
+		setReadOnly(false);
+	};
+
+	const onKeyDown = (event) => {
+		if (!readOnly) event.stopPropagation();
 	};
 
 	return (
@@ -72,7 +101,7 @@ export default function CanvasComponent(props) {
 			}}
 			onDragStop={(e, d) => {
 				isDragged.current = false;
-				actions?.updateCanvasData({
+				actions.updateCanvasData({
 					id,
 					position: { left: d.x, top: d.y },
 				});
@@ -95,7 +124,12 @@ export default function CanvasComponent(props) {
 			onMouseEnter={onMouseEnter}
 			onMouseLeave={onMouseLeave}
 			onClick={onClick}
-			enableResizing={getEnableResize(type)}
+			onDoubleClick={onDoubleClick}
+			onFocus={onFocus}
+			onBlur={onBlur}
+			onKeyDown={onKeyDown}
+			enableResizing={getEnableResize()}
+			tabIndex={0}
 			lockAspectRatio={type === 'IMAGE'}
 			bounds='parent'
 		>

@@ -33,6 +33,7 @@ export default function DragDropList() {
 					<input
 						type='search'
 						placeholder='Search...'
+						tabIndex={-1}
 						onChange={handleChange}
 					/>
 				</div>
