@@ -1,97 +1,206 @@
 [
     {
-        "id":0,
         "src":"0.png",
         "name":["Arrow Backward", "Back", "Left", "Previous"]
     },
     {
-        "id":1,
         "src":"1.png",
         "name":["Close", "Cancel", "Clear", "Delete"]
     },
     {
-        "id":2,
         "src":"2.png",
         "name":["Avatar", "Person", "Account"]
     },
     {
-        "id":3,
         "src":"3.png",
         "name":["Checkbox", "Check", "Ok", "Done"]
     },
     {
-        "id":4,
         "src":"4.png",
         "name":["Arrow Forward", "Forward", "Next", "Right"]
     },
     {
-        "id":5,
         "src":"5.png",
         "name":["Menu", "Hamburger", "Drawer", "Navigation"]
     },
     {
-        "id":6,
         "src":"6.png",
         "name":["Play", "Play Arrow", "Pause", "Video"]
     },
     {
-        "id":7,
         "src":"7.png",
         "name":["Plus", "Add", "Create", "Expand", "New Tab"]
     },
     {
-        "id":8,
         "src":"8.png",
         "name":["Search", "Find", "Magnifying Glass"]
     },
     {
-        "id":9,
         "src":"9.png",
         "name":["Setting", "Gear", "Preference", "Option"]
     },
     {
-        "id":10,
         "src":"10.png",
         "name":["Share", "Menu"]
     },
     {
-        "id":11,
         "src":"11.png",
         "name":["Slider"]
     },
     {
-        "id":12,
         "src":"12.png",
         "name":["Switch", "On", "Off"]
     },
     {
-        "id":13,
         "src":"13.png",
         "name":["Container"]
     },
     {
-        "id":14,
         "src":"14.png",
         "name":["Star", "Rate", "Rating", "Favorite"]
     },
     {
-        "id":15,
         "src":"15.png",
         "name":["Home", "House", "Building"]
     },
     {
-        "id":16,
         "src":"16.png",
         "name":["Camera", "Photo", "Instagram"]
     },
     {
-        "id":17,
         "src":"17.png",
         "name":["Envelope", "Email", "Inbox", "Share"]
     },
     {
-        "id":20,
         "src":"20.png",
         "name":["Image", "Background Image"]
+    },
+    {
+        "src":"21.png",
+        "name":["Radio Button"]
+    },
+    {
+        "src":"22.png",
+        "name":["Date Picker"]
+    },
+    {
+        "src":"23.png",
+        "name":["Map View"]
+    },
+    {
+        "src":"24.png",
+        "name":["Number Stepper"]
+    },
+    {
+        "src":"25.png",
+        "name":["Video"]
+    },
+    {
+        "src":"26.png",
+        "name":["Input"]
+    },
+    {
+        "src":"27.png",
+        "name":["More", "Dots", "Overflow", "Three"]
+    },
+    {
+        "src":"28.png",
+        "name":["Favorites", "Like", "Upvote", "Heart"]
+    },
+    {
+        "src":"29.png",
+        "name":["Refresh", "Reload", "Sync", "Reset"]
+    },
+    {
+        "src":"30.png",
+        "name":["Info", "Information", "About", "Infos"]
+    },
+    {
+        "src":"31.png",
+        "name":["Edit", "Create", "Compose"]
+    },
+    {
+        "src":"32.png",
+        "name":["Chat", "Comment", "Message"]
+    },
+    {
+        "src":"33.png",
+        "name":["Expand", "More"]
+    },
+    {
+        "src":"34.png",
+        "name":["Help", "Question Mark", "HowTo", "Info"]
+    },
+    {
+        "src":"35.png",
+        "name":["Facebook", "FB", "Share", "Login"]
+    },
+    {
+        "src":"36.png",
+        "name":["Volume", "Mute", "Sound", "Speak"]
+    },
+    {
+        "src":"37.png",
+        "name":["Pause", "Play", "Stop", "Player"]
+    },
+    {
+        "src":"38.png",
+        "name":["Microphone", "Voice", "Mic", "Speech"]
+    },
+    {
+        "src":"39.png",
+        "name":["Delete", "Trash", "Remove", "Clear"]
+    },
+    {
+        "src":"40.png",
+        "name":["Notification", "Alert", "Bell", "Notify"]
+    },
+    {
+        "src":"41.png",
+        "name":["Sort", "Filter"]
+    },
+    {
+        "src":"42.png",
+        "name":["Twitter", "Share", "TW", "Login"]
+    },
+    {
+        "src":"43.png",
+        "name":["Location", "Pin", "Place"]
+    },
+    {
+        "src":"44.png",
+        "name":["Bookmark", "Save", "Wishlist", "MySection"]
+    },
+    {
+        "src":"45.png",
+        "name":["Emoji", "Trending", "Emotion"]
+    },
+    {
+        "src":"46.png",
+        "name":["Silder", "Filter", "Settings"]
+    },
+    {
+        "src":"47.png",
+        "name":["Call", "Phone", "Telephone", "Dialpad"]
+    },
+    {
+        "src":"48.png",
+        "name":["Minus", "Hide", "Down", "Decrement"]
+    },
+    {
+        "src":"49.png",
+        "name":["Download", "Save", "Get App"]
+    },
+    {
+        "src":"50.png",
+        "name":["Checkout", "Shopping", "Cart", "Shop"]
+    },
+    {
+        "src":"51.png",
+        "name":["Lists", "Bullets", "Option"]
+    },
+    {
+        "src":"52.png",
+        "name":["Undo", "Retake", "Back", "Reset"]
     }
 ]

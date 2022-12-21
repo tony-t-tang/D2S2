@@ -2,8 +2,7 @@ import '../Assets/Styles/DragDropList.css';
 import { useState } from 'react';
 import { Box, Grid } from '@mui/material';
 import Icon from './Icon';
-import ICONS from '../Data/ICONS.json';
-import { v4 as uuidv4 } from 'uuid';
+import ICONS from '../Data/Icons.json';
 
 function getStyles() {
 	return {
@@ -22,10 +21,10 @@ export default function DragDropList() {
 		<Box
 			className='box-frame'
 			sx={{
-				width: 200,
-				height: 524,
+				width: 202,
+				height: 525,
 				backgroundColor: '#D9D9D9',
-				border: 2,
+				border: 1,
 			}}
 		>
 			Drag & Drop
@@ -34,6 +33,7 @@ export default function DragDropList() {
 					<input
 						type='search'
 						placeholder='Search...'
+						tabIndex={-1}
 						onChange={handleChange}
 					/>
 				</div>
@@ -66,10 +66,7 @@ export default function DragDropList() {
 							xs={6}
 						>
 							<Icon
-								uuid={uuidv4()}
-								id={icon.id}
 								src={icon.src}
-								name={icon.name}
 								style={getStyles()}
 							/>
 							<p>{icon.name[0]}</p>

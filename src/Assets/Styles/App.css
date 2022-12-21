@@ -1,14 +1,14 @@
-.PSDoodle {
+.title {
     position: relative;
     padding-left: 50%;
     font-weight: bold;
     font-family: Helvetica;
     font-size: 20px;
 }
+
 .background {
     color:white;
 }
-
 
 .main-container {
     justify-content: center;

@@ -1,0 +1,37 @@
+p,
+ul,
+ol,
+dl,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+blockquote,
+pre,
+form,
+table {
+    margin: 0;
+}
+
+.quill-container {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+}
+
+.quill-container .ql-editor {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+}
+
+.quill-container .ql-container {
+    border: 0 !important;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+}

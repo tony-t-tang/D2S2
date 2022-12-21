@@ -1,11 +1,9 @@
 import '../Assets/Styles/Canvas.css';
 import { CanvasContext } from '../App';
-import { useState, useContext } from 'react';
+import { useContext } from 'react';
 import { useDrop } from 'react-dnd';
 import { Box } from '@mui/material';
 import CanvasComponent from './CanvasComponent';
-import { v4 as uuidv4 } from 'uuid';
-
 
 const style = {
 	width: 500,
@@ -16,20 +14,14 @@ const style = {
 };
 
 export default function Canvas() {
-	const {state, actions} = useContext(CanvasContext)
+	const { actions, state } = useContext(CanvasContext);
 
 	const [, drop] = useDrop(
 		() => ({
 			accept: 'image',
 			drop: (item) => {
-				const iconList = state.canvas.filter(
-					(icon) => item.uuid === icon.uuid
-				);
-
-				if (iconList.length < 1) {
-					actions.setCanvas([...state.canvas, item]);
-				}
-
+				actions.addElement('IMAGE', item.src);
+				console.log(state.canvas)
 				return undefined;
 			},
 		}),
@@ -43,17 +35,8 @@ export default function Canvas() {
 			id='container'
 		>
 			<div>Canvas</div>
-			{state.canvas.map((item) => {
-				return (
-					<CanvasComponent
-						uuid={item.uuid}
-						id={item.id}
-						src={item.src}
-						name={item.name}
-						left={item.left}
-						top={item.top}
-					/>
-				);
+			{state.canvas.map((canvas) => {
+				return <CanvasComponent {...canvas} />;
 			})}
 		</Box>
 	);
