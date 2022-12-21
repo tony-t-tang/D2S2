@@ -2,7 +2,7 @@ import '../Assets/Styles/DragDropList.css';
 import { useState } from 'react';
 import { Box, Grid } from '@mui/material';
 import Icon from './Icon';
-import ICONS from '../Data/ICONS.json';
+import ICONS from '../Data/Icons.json';
 
 function getStyles() {
 	return {
