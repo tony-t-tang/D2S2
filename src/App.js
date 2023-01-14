@@ -32,7 +32,7 @@ function App() {
 				left: 50,
 			},
 			dimension: {
-				width: type === 'TEXT' ? '150' : '50',
+				width: type === 'TEXT' ? '90' : '50',
 				height: '50',
 			},
 			content: type === 'TEXT' ? 'Sample Text' : '',
@@ -83,7 +83,7 @@ function App() {
 		[deleteElement, activeSelection]
 	);
 
-	const handleMouseDown = useCallback((event) => {
+	const handleMouseDown = useCallback(() => {
 		setActiveSelection(new Set());
 	}, []);
 
