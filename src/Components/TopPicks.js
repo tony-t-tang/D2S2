@@ -39,8 +39,8 @@ export default function TopPicks() {
 
 		const headers = {
 			headers: {
-				canvaswidth: 500,
-				canvasheight: 565,
+				canvasWidth: 500,
+				canvasHeight: 565,
 				elements: [[100, 0, 20, 20, 15, '']],
 			},
 		};
