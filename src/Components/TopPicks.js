@@ -23,19 +23,19 @@ export default function TopPicks() {
 	const { actions, state } = useContext(CanvasContext);
 
 	useEffect(() => {
-		let elements = [];
+		// let elements = [];
 
-		for (let i = 0; i < state.canvas.length; i++) {
-			let data = [
-				state.canvas[i].position.left,
-				state.canvas[i].position.top,
-				parseInt(state.canvas[i].dimension.width),
-				parseInt(state.canvas[i].dimension.height),
-				state.canvas[i].content,
-			];
+		// for (let i = 0; i < state.canvas.length; i++) {
+		// 	let data = [
+		// 		state.canvas[i].position.left,
+		// 		state.canvas[i].position.top,
+		// 		parseInt(state.canvas[i].dimension.width),
+		// 		parseInt(state.canvas[i].dimension.height),
+		// 		state.canvas[i].content,
+		// 	];
 
-			elements.push(data);
-		}
+		// 	elements.push(data);
+		// }
 
 		const headers = {
 			headers: {
@@ -45,7 +45,7 @@ export default function TopPicks() {
 			},
 		};
 
-		const url = 'http://pixeltoapp.com/getTopPicks/';
+		const url = 'http://pixeltoapp.com/getTopPicks';
 
 		console.log(headers);
 		console.log(elements);
