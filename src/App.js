@@ -83,7 +83,7 @@ function App() {
 		[deleteElement, activeSelection]
 	);
 
-	const handleMouseDown = useCallback((event) => {
+	const handleMouseDown = useCallback(() => {
 		setActiveSelection(new Set());
 	}, []);
 

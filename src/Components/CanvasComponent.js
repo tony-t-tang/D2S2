@@ -92,10 +92,10 @@ export default function CanvasComponent(props) {
 		<Rnd
 			style={style}
 			size={{
-				width: dimension?.width || 0,
-				height: dimension?.height || 0,
+				width: dimension.width || 0,
+				height: dimension.height || 0,
 			}}
-			position={{ x: position?.left || 0, y: position?.top || 0 }}
+			position={{ x: position.left || 0, y: position.top || 0 }}
 			onDragStart={() => {
 				isDragged.current = true;
 			}}
