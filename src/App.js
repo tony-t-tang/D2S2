@@ -35,7 +35,7 @@ function App() {
 				width: type === 'TEXT' ? '90' : '50',
 				height: '50',
 			},
-			content: type === 'TEXT' ? 'Sample Text' : '',
+			content: type === 'TEXT' ? '<p>Sample Text</p>' : '',
 		};
 		setCanvas([...canvas, { ...defaultData, type: type ?? 'TEXT' }]);
 		activeSelection.clear();

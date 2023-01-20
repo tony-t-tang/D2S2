@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import '../Assets/Styles/TopPicks.css';
 import { Box, Grid } from '@mui/material';
 import { CanvasContext } from '../App';
+import parse from 'html-react-parser';
 import axios from 'axios';
 
 const style = {
@@ -19,44 +20,68 @@ const titleStyle = {
 };
 
 export default function TopPicks() {
-	const [topPicks, setTopPicks] = useState([]);
-	const { actions, state } = useContext(CanvasContext);
+	const [topPicks, setTopPicks] = useState([0]);
+	const [timeoutID, setTimeoutID] = useState(null);
+	const { state } = useContext(CanvasContext);
 
 	useEffect(() => {
-		// let elements = [];
+		if (timeoutID) {
+			clearTimeout(timeoutID);
+		}
 
-		// for (let i = 0; i < state.canvas.length; i++) {
-		// 	let data = [
-		// 		state.canvas[i].position.left,
-		// 		state.canvas[i].position.top,
-		// 		parseInt(state.canvas[i].dimension.width),
-		// 		parseInt(state.canvas[i].dimension.height),
-		// 		state.canvas[i].content,
-		// 	];
+		const id = setTimeout(() => {
+			console.log('Fetching Top Picks');
 
-		// 	elements.push(data);
-		// }
+			let elements = [];
 
-		const headers = {
-			headers: {
-				canvasWidth: 500,
-				canvasHeight: 565,
-				elements: [[100, 0, 20, 20, 15, '']],
-			},
+			for (let i = 0; i < state.canvas.length; i++) {
+				let data = [
+					state.canvas[i].position.left,
+					state.canvas[i].position.top,
+					parseInt(state.canvas[i].dimension.width),
+					parseInt(state.canvas[i].dimension.height),
+					state.canvas[i].type == 'TEXT'
+						? parse(state.canvas[i].content).props.children
+						: '',
+				];
+
+				elements.push(data);
+			}
+
+			const headers = {
+				canvasHeight: '565',
+				canvasWidth: '500',
+				elements:
+					"[ [ 0, 5, 20, 20, 2, '' ], [ 0, 5, 20, 20, 2, '' ] ]",
+			};
+
+			const url = 'http://pixeltoapp.com/getTopPicks/';
+
+			console.log(headers);
+
+			axios
+				.get(url, {
+					headers,
+				})
+				.then((response) => {
+					console.log(response);
+
+					let data = [];
+
+					for (let i = 0; i < 5; i++) {
+						data.push(response.data[i]);
+					}
+
+					console.log(data);
+					setTopPicks(data);
+				});
+		}, 4000);
+
+		setTimeoutID(id);
+
+		return () => {
+			clearTimeout(id);
 		};
-
-		const url = 'http://pixeltoapp.com/getTopPicks';
-
-		console.log(headers);
-		console.log(elements);
-
-		axios
-			.get(url, {
-				headers,
-			})
-			.then((response) => {
-				setTopPicks(response);
-			});
 	}, [state.canvas]);
 
 	return (
