@@ -20,8 +20,7 @@ const titleStyle = {
 };
 
 export default function TopPicks() {
-	const [openPopup, setOpenPopup] = useState(false);
-	const [topPicks, setTopPicks] = useState([0, 5, 6, 2, 8, 9, 10]);
+	const [topPicks, setTopPicks] = useState([]);
 	const [timeoutID, setTimeoutID] = useState(null);
 	const { state } = useContext(CanvasContext);
 
@@ -41,14 +40,12 @@ export default function TopPicks() {
 					state.canvas[i].position.top,
 					parseInt(state.canvas[i].dimension.width),
 					parseInt(state.canvas[i].dimension.height),
-					state.canvas[i].type === 'TEXT'
-						? 18
-						: parseInt(
-								state.canvas[i].src.slice(
-									0,
-									state.canvas[i].src.length - 4
-								)
-						  ),
+					parseInt(
+						state.canvas[i].src.slice(
+							0,
+							state.canvas[i].src.length - 4
+						)
+					),
 					state.canvas[i].type === 'TEXT'
 						? parse(state.canvas[i].content).props.children
 						: '',
@@ -63,26 +60,25 @@ export default function TopPicks() {
 				elements: JSON.stringify(elements),
 			};
 			const url = 'http://pixeltoapp.com/getTopPicks/';
+			
 			console.log(headers);
-			//console.log("[[0,5,20,20,2,\"Sample Text\"]]");
-			// console.log(JSON.stringify(elements));
 
-			// axios
-			// 	.get(url, {
-			// 		headers,
-			// 	})
-			// 	.then((response) => {
-			// 		console.log(response);
+			axios
+				.get(url, {
+					headers,
+				})
+				.then((response) => {
+					console.log(response);
 
-			// 		let data = [];
+					let data = [];
 
-			// 		for (let i = 0; i < 5; i++) {
-			// 			data.push(response.data[i]);
-			// 		}
+					for (let i = 0; i < 5; i++) {
+						data.push(response.data[i]);
+					}
 
-			// 		console.log(data);
-			// 		setTopPicks(data);
-			// 	});
+					console.log(data);
+					setTopPicks(data);
+				});
 		}, 4000);
 
 		setTimeoutID(id);

@@ -25,7 +25,7 @@ function App() {
 	const addElement = (type, src) => {
 		const defaultData = {
 			type: type,
-			src: type === 'TEXT' ? null : src,
+			src: type === 'TEXT' ? '18.png' : src,
 			id: `${type}__${Date.now()}`,
 			position: {
 				top: 50,
