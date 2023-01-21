@@ -1,0 +1,12 @@
+.image {
+    width: 135px;
+}
+
+.image:hover {
+    cursor: pointer;
+}
+
+.popup {
+    width: 375px;
+    height: 700px;
+}
