@@ -1,8 +1,12 @@
 .image {
     width: 135px;
-    transition: transform .2s;
 }
 
 .image:hover {
-    transform: scale(2.5);
+    cursor: pointer;
+}
+
+.popup {
+    width: 375px;
+    height: 700px;
 }

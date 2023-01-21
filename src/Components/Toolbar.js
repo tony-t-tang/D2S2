@@ -33,13 +33,13 @@ export default function Toolbar() {
 						sx={{ color: 'black' }}
 						tabIndex={-1}
 					>
-						<RedoIcon />
+						<UndoIcon />
 					</IconButton>
 					<IconButton
 						sx={{ color: 'black' }}
 						tabIndex={-1}
 					>
-						<UndoIcon />
+						<RedoIcon />
 					</IconButton>
 					<IconButton
 						sx={{ color: 'black' }}
