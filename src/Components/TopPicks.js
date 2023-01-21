@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import '../Assets/Styles/TopPicks.css';
 import { Box, Grid } from '@mui/material';
 import { CanvasContext } from '../App';
-import Popup from '../Components/Popup';
+import Picture from '../Components/Picture';
 import parse from 'html-react-parser';
 import axios from 'axios';
 
@@ -60,12 +60,12 @@ export default function TopPicks() {
 			const headers = {
 				canvasHeight: '565',
 				canvasWidth: '500',
-				elements: '[[50,50,90,50,18,"Sample Text"]]',
+				elements: JSON.stringify(elements),
 			};
 			const url = 'http://pixeltoapp.com/getTopPicks/';
 			console.log(headers);
 			//console.log("[[0,5,20,20,2,\"Sample Text\"]]");
-			console.log(JSON.stringify(elements));
+			// console.log(JSON.stringify(elements));
 
 			// axios
 			// 	.get(url, {
@@ -91,7 +91,7 @@ export default function TopPicks() {
 			clearTimeout(id);
 		};
 	}, [state.canvas]);
-  
+
 	return (
 		<Box
 			sx={style}
@@ -106,27 +106,13 @@ export default function TopPicks() {
 				{topPicks.map((picks) => {
 					return (
 						<Grid
+							key={picks}
 							item
-							sx={8}
-							spacing={1}
 						>
-							<img
-								className={'image'}
-								src={`https://ricoimage.s3.us-east-2.amazonaws.com/OnlyImage/${picks}.jpg`}
-								alt=''
-								onClick={() => setOpenPopup(true)}
-							></img>
-							<Popup
-								openPopup={openPopup}
-								setOpenPopup={setOpenPopup}
-								color='inherit'
-							>
-								<img
-									className={'popup'}
-									src={`https://ricoimage.s3.us-east-2.amazonaws.com/OnlyImage/${picks}.jpg`}
-									alt=''
-								></img>
-							</Popup>
+							<Picture
+								key={picks}
+								src={picks}
+							></Picture>
 						</Grid>
 					);
 				})}

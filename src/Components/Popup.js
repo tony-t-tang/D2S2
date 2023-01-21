@@ -13,7 +13,9 @@ function Popup(props) {
 	return (
 		<Dialog open={openPopup}>
 			<DialogTitle>
-				<div style={{ display: 'flex' }}>
+				<div
+					style={{ display: 'flex', flexDirection: 'row-reverse' }}
+				>
 					<Button onClick={() => setOpenPopup(false)}>
 						<CloseIcon />
 					</Button>
