@@ -91,7 +91,7 @@ export default function TopPicks() {
 			clearTimeout(id);
 		};
 	}, [state.canvas]);
-
+  
 	return (
 		<Box
 			sx={style}
