@@ -63,22 +63,22 @@ export default function TopPicks() {
 			
 			console.log(headers);
 
-			// axios
-			// 	.get(url, {
-			// 		headers,
-			// 	})
-			// 	.then((response) => {
-			// 		console.log(response);
+			axios
+				.get(url, {
+					headers,
+				})
+				.then((response) => {
+					console.log(response);
 
-			// 		let data = [];
+					let data = [];
 
-			// 		for (let i = 0; i < 5; i++) {
-			// 			data.push(response.data[i]);
-			// 		}
+					for (let i = 0; i < 5; i++) {
+						data.push(response.data[i]);
+					}
 
-			// 		console.log(data);
-			// 		setTopPicks(data);
-			// 	});
+					console.log(data);
+					setTopPicks(data);
+				});
 		}, 4000);
 
 		setTimeoutID(id);
