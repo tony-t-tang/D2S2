@@ -3,6 +3,7 @@ import { CanvasContext } from '../App';
 import { Rnd } from 'react-rnd';
 import ImageElement from './ImageElement';
 import TextElement from './TextElement';
+import TextButtonElement from './TextButtonElement';
 
 const getEnableResize = () => {
 	return {
@@ -39,15 +40,26 @@ export default function CanvasComponent(props) {
 	};
 
 	const getComponent = () => {
-		return type === 'TEXT' ? (
-			<TextElement
-				content={content}
-				id={id}
-				readOnly={readOnly}
-			/>
-		) : (
-			<ImageElement src={src} />
-		);
+		if (type === 'IMAGE') {
+			return <ImageElement src={src} />;
+		} else if (src === '18.png') {
+			return (
+				<TextElement
+					content={content}
+					id={id}
+					readOnly={readOnly}
+				></TextElement>
+			);
+		} else {
+			return (
+				<TextButtonElement
+					sx={{ border: 'solid', borderStyle: 'dashed' }}
+					content={content}
+					id={id}
+					readOnly={readOnly}
+				></TextButtonElement>
+			);
+		}
 	};
 
 	const onMouseEnter = () => {

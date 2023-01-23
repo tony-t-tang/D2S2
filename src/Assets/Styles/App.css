@@ -8,6 +8,7 @@
 
 .background {
     color:white;
+    font-family: Helvetica;
 }
 
 .main-container {
@@ -17,6 +18,4 @@
     margin-right: auto;
     text-align: center;
     color: black
-    
-    
 }
