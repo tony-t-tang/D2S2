@@ -64,6 +64,7 @@ export default function DragDropList() {
 						<Grid
 							item
 							xs={6}
+							key={icon.src}
 						>
 							<Icon
 								src={icon.src}

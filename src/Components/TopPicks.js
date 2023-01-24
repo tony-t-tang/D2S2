@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import '../Assets/Styles/TopPicks.css';
 import { Box, Grid } from '@mui/material';
 import { CanvasContext } from '../App';
+import Picture from '../Components/Picture';
 import parse from 'html-react-parser';
 import axios from 'axios';
 
@@ -12,7 +13,6 @@ const style = {
 	border: 1,
 	overflow: 'scroll',
 	overflowX: 'hidden',
-	'&:hover': { overflow: 'visible' },
 };
 
 const titleStyle = {
@@ -20,7 +20,7 @@ const titleStyle = {
 };
 
 export default function TopPicks() {
-	const [topPicks, setTopPicks] = useState([0]);
+	const [topPicks, setTopPicks] = useState([]);
 	const [timeoutID, setTimeoutID] = useState(null);
 	const { state } = useContext(CanvasContext);
 
@@ -30,52 +30,58 @@ export default function TopPicks() {
 		}
 
 		const id = setTimeout(() => {
-			console.log('Fetching Top Picks');
+			if (state.canvas.length > 0) {
+				console.log('Fetching Top Picks');
 
-			let elements = [];
+				let elements = [];
 
-			for (let i = 0; i < state.canvas.length; i++) {
-				let data = [
-					state.canvas[i].position.left,
-					state.canvas[i].position.top,
-					parseInt(state.canvas[i].dimension.width),
-					parseInt(state.canvas[i].dimension.height),
-					state.canvas[i].type == 'TEXT'
-						? parse(state.canvas[i].content).props.children
-						: '',
-				];
+				for (let i = 0; i < state.canvas.length; i++) {
+					let data = [
+						state.canvas[i].position.left,
+						state.canvas[i].position.top,
+						parseInt(state.canvas[i].dimension.width),
+						parseInt(state.canvas[i].dimension.height),
+						parseInt(
+							state.canvas[i].src.slice(
+								0,
+								state.canvas[i].src.length - 4
+							)
+						),
+						state.canvas[i].type === 'TEXT'
+							? parse(state.canvas[i].content).props.children
+							: '',
+					];
 
-				elements.push(data);
+					elements.push(data);
+				}
+
+				const headers = {
+					canvasHeight: '565',
+					canvasWidth: '500',
+					elements: JSON.stringify(elements),
+				};
+				const url = 'http://pixeltoapp.com/getTopPicks/';
+
+				console.log(headers);
+
+				axios
+					.get(url, {
+						headers,
+					})
+					.then((response) => {
+						console.log(response);
+
+						let data = [];
+
+						for (let i = 0; i < 5; i++) {
+							data.push(response.data[i]);
+						}
+
+						console.log(data);
+						setTopPicks(data);
+					});
 			}
-
-			const headers = {
-				canvasHeight: '565',
-				canvasWidth: '500',
-				elements:
-					"[ [ 0, 5, 20, 20, 2, '' ], [ 0, 5, 20, 20, 2, '' ] ]",
-			};
-
-			const url = 'http://pixeltoapp.com/getTopPicks/';
-
-			console.log(headers);
-
-			axios
-				.get(url, {
-					headers,
-				})
-				.then((response) => {
-					console.log(response);
-
-					let data = [];
-
-					for (let i = 0; i < 5; i++) {
-						data.push(response.data[i]);
-					}
-
-					console.log(data);
-					setTopPicks(data);
-				});
-		}, 4000);
+		}, 2000);
 
 		setTimeoutID(id);
 
@@ -83,7 +89,7 @@ export default function TopPicks() {
 			clearTimeout(id);
 		};
 	}, [state.canvas]);
-  
+
 	return (
 		<Box
 			sx={style}
@@ -94,20 +100,17 @@ export default function TopPicks() {
 				container
 				spacing={1}
 				columns={2}
-				sx={{ overflow: 'visible !important' }}
 			>
 				{topPicks.map((picks) => {
 					return (
 						<Grid
+							key={picks}
 							item
-							sx={8}
-							spacing={1}
 						>
-							<img
-								className={'image'}
-								src={`https://ricoimage.s3.us-east-2.amazonaws.com/OnlyImage/${picks}.jpg`}
-								alt=''
-							></img>
+							<Picture
+								key={picks}
+								src={picks}
+							></Picture>
 						</Grid>
 					);
 				})}
