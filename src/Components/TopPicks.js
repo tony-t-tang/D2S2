@@ -30,7 +30,10 @@ export default function TopPicks() {
 		}
 
 		const id = setTimeout(() => {
-			if (state.canvas.length > 0) {
+			if(state.canvas.length === 0) {
+				setTopPicks([]);
+			}
+			else {
 				console.log('Fetching Top Picks');
 
 				let elements = [];
@@ -73,7 +76,7 @@ export default function TopPicks() {
 
 						let data = [];
 
-						for (let i = 0; i < 5; i++) {
+						for (let i = 0; i < 100; i++) {
 							data.push(response.data[i]);
 						}
 
