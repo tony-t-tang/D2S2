@@ -110,6 +110,18 @@ function App() {
 						<Suggestion />
 						<TopPicks />
 					</div>
+					<a
+						href='https://forms.gle/QURxuNncDhVyUCR2A'
+						target='blank'
+						style={{
+							justifyContent: 'center',
+							alignItems: 'center',
+							display: 'flex',
+							fontSize: '30px',
+						}}
+					>
+						Leave Feedback
+					</a>
 				</CanvasContext.Provider>
 			</div>
 		</DndProvider>
