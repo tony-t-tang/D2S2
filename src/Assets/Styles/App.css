@@ -1,6 +1,7 @@
 .title {
-    position: relative;
-    padding-left: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     font-weight: bold;
     font-family: Helvetica;
     font-size: 20px;
