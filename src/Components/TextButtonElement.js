@@ -21,7 +21,7 @@ export default function TextButtonElement(props) {
 		return (
 			<div
 				className='quill-container'
-				style={{ padding: 0, border: 'solid' }}
+				style={{ padding: 0, border: 'solid', borderStyle: 'dashed' }}
 			>
 				{parse(content)}
 			</div>

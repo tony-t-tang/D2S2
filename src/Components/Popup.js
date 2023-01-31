@@ -9,13 +9,20 @@ import CloseIcon from '@mui/icons-material/Close';
 function Popup(props) {
 	const { children, openPopup, setOpenPopup } = props;
 
+	const handleClose = () => {
+		setOpenPopup(false);
+	}
+
 	return (
-		<Dialog open={openPopup}>
+		<Dialog
+			open={openPopup}
+			onClose={handleClose}
+		>
 			<DialogTitle>
 				<div style={{ display: 'flex', flexDirection: 'row-reverse' }}>
 					<Button
 						sx={{ color: 'black' }}
-						onClick={() => setOpenPopup(false)}
+						onClick={handleClose}
 					>
 						<CloseIcon />
 					</Button>
