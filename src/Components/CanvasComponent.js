@@ -118,7 +118,6 @@ export default function CanvasComponent(props) {
 					id,
 					position: { left: d.x, top: d.y },
 				});
-				console.log(state.canvas);
 			}}
 			onResizeStart={() => {
 				actions.setUndo([...state.undo, state.canvas]);

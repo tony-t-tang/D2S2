@@ -1,6 +1,6 @@
 import '../Assets/Styles/Canvas.css';
 import { CanvasContext } from '../App';
-import { useContext, useEffect, useRef } from 'react';
+import { useContext, useRef } from 'react';
 import { useDrop } from 'react-dnd';
 import { Box } from '@mui/material';
 import CanvasComponent from './CanvasComponent';
