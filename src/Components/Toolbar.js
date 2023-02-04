@@ -16,8 +16,6 @@ export default function Toolbar() {
 		if (state.undo.length !== 0) {
 			actions.setRedo([...state.redo, state.canvas]);
 			actions.setCanvas(state.undo.pop());
-			// console.log('Undo');
-			// console.log(state.undo);
 		}
 	};
 
@@ -25,15 +23,12 @@ export default function Toolbar() {
 		if (state.redo.length !== 0) {
 			actions.setUndo([...state.undo, state.canvas]);
 			actions.setCanvas(state.redo.pop());
-			// console.log('redo');
-			// console.log(state.redo);
 		}
 	};
 
 	const handleClear = () => {
 		actions.setUndo([...state.undo, state.canvas]);
 		actions.setCanvas([]);
-	
 	};
 
 	return (

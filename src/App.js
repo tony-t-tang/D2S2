@@ -40,6 +40,9 @@ function App() {
 			},
 			content: type === 'TEXT' ? '<p>Sample Text</p>' : '',
 		};
+		if (redo.length > 0) {
+			setRedo([]);
+		}
 		setUndo([...undo, canvas]);
 		setCanvas([...canvas, { ...defaultData, type: type ?? 'TEXT' }]);
 		activeSelection.clear();
