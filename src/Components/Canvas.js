@@ -46,17 +46,16 @@ export default function Canvas() {
 
 	return (
 		<Box
-			ref={drop}
+			ref={(el) => {
+				drop(el);
+				canvasRef.current = el;
+			}}
 			sx={style}
 			id='container'
 		>
 			<div>Canvas</div>
 			{state.canvas.map((canvas) => {
-				return (
-					<CanvasComponent
-						{...canvas}
-					/>
-				);
+				return <CanvasComponent {...canvas} />;
 			})}
 		</Box>
 	);
