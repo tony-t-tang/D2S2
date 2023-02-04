@@ -1,15 +1,26 @@
 .title {
+    padding-top: 10%;
     display: flex;
     justify-content: center;
     align-items: center;
     font-weight: bold;
     font-family: Helvetica;
     font-size: 20px;
+    color: white;
 }
 
 .background {
-    color:white;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    overflow: auto;
+    background: black;
     font-family: Helvetica;
+    height: 100%;
+    width: 100%;
+    border: solid;
 }
 
 .main-container {

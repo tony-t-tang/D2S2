@@ -10,7 +10,31 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import { CanvasContext } from '../App';
 
 export default function Toolbar() {
-	const { actions } = useContext(CanvasContext);
+	const { actions, state } = useContext(CanvasContext);
+
+	const handleUndo = () => {
+		if (state.undo.length !== 0) {
+			actions.setRedo([...state.redo, state.canvas]);
+			actions.setCanvas(state.undo.pop());
+			// console.log('Undo');
+			// console.log(state.undo);
+		}
+	};
+
+	const handleRedo = () => {
+		if (state.redo.length !== 0) {
+			actions.setUndo([...state.undo, state.canvas]);
+			actions.setCanvas(state.redo.pop());
+			// console.log('redo');
+			// console.log(state.redo);
+		}
+	};
+
+	const handleClear = () => {
+		actions.setUndo([...state.undo, state.canvas]);
+		actions.setCanvas([]);
+	
+	};
 
 	return (
 		<div className='toolbar'>
@@ -40,19 +64,21 @@ export default function Toolbar() {
 					<IconButton
 						sx={{ color: 'black' }}
 						tabIndex={-1}
+						onClick={handleUndo}
 					>
 						<UndoIcon />
 					</IconButton>
 					<IconButton
 						sx={{ color: 'black' }}
 						tabIndex={-1}
+						onClick={handleRedo}
 					>
 						<RedoIcon />
 					</IconButton>
 					<IconButton
 						sx={{ color: 'black' }}
 						tabIndex={-1}
-						onClick={() => actions.setCanvas([])}
+						onClick={handleClear}
 					>
 						<DeleteIcon />
 					</IconButton>

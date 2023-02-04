@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { Box, Grid } from '@mui/material';
 import Icon from './Icon';
 import ICONS from '../Data/Icons.json';
+import { CanvasContext } from '../App';
 
 function getStyles() {
 	return {
