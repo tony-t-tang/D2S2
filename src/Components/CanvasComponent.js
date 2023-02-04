@@ -1,4 +1,4 @@
-import React, { useState, useRef, useContext } from 'react';
+import React, { useState, useRef, useContext, useEffect } from 'react';
 import { CanvasContext } from '../App';
 import { Rnd } from 'react-rnd';
 import ImageElement from './ImageElement';
@@ -100,6 +100,8 @@ export default function CanvasComponent(props) {
 		if (!readOnly) event.stopPropagation();
 	};
 
+	useEffect(() => {}, [state.canvas]);
+
 	return (
 		<Rnd
 			style={style}
@@ -108,9 +110,13 @@ export default function CanvasComponent(props) {
 				height: dimension.height || 0,
 			}}
 			position={{ x: position.left || 0, y: position.top || 0 }}
-			onDragStart={() => {
+			onDragStart={(e, d) => {
 				isDragged.current = true;
 				actions.setUndo([...state.undo, state.canvas]);
+				actions.updateCanvasData({
+					id,
+					position: { left: d.x, top: d.y },
+				});
 			}}
 			onDragStop={(e, d) => {
 				isDragged.current = false;
