@@ -63,7 +63,7 @@ function App() {
 			}),
 		]);
 		setActiveSelection(new Set());
-	}, [activeSelection, canvas]);
+	}, [activeSelection, canvas, undo]);
 
 	const context = {
 		actions: {
