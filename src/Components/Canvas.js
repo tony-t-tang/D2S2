@@ -3,7 +3,6 @@ import { CanvasContext } from '../App';
 import { useContext, useEffect, useRef } from 'react';
 import { useDrop } from 'react-dnd';
 import { Box } from '@mui/material';
-import { v4 as uuidv4 } from 'uuid';
 import CanvasComponent from './CanvasComponent';
 
 const style = {
@@ -47,10 +46,7 @@ export default function Canvas() {
 
 	return (
 		<Box
-			ref={(el) => {
-				drop(el);
-				canvasRef.current = el;
-			}}
+			ref={drop}
 			sx={style}
 			id='container'
 		>
@@ -58,7 +54,6 @@ export default function Canvas() {
 			{state.canvas.map((canvas) => {
 				return (
 					<CanvasComponent
-						key={uuidv4()}
 						{...canvas}
 					/>
 				);
