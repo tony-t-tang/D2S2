@@ -110,6 +110,7 @@ export default function CanvasComponent(props) {
 			position={{ x: position.left || 0, y: position.top || 0 }}
 			onDragStart={() => {
 				isDragged.current = true;
+				actions.setUndo([...state.undo, state.canvas]);
 			}}
 			onDragStop={(e, d) => {
 				isDragged.current = false;
@@ -117,12 +118,16 @@ export default function CanvasComponent(props) {
 					id,
 					position: { left: d.x, top: d.y },
 				});
+				console.log(state.canvas);
+			}}
+			onResizeStart={() => {
+				actions.setUndo([...state.undo, state.canvas]);
 			}}
 			onResize={(e, direction, ref, delta, position) => {
 				state.activeSelection.clear();
 				state.activeSelection.add(id);
 				actions.setActiveSelection(new Set(state.activeSelection));
-				actions?.updateCanvasData({
+				actions.updateCanvasData({
 					id,
 					dimension: {
 						width: ref.style.width,

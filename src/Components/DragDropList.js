@@ -1,8 +1,9 @@
 import '../Assets/Styles/DragDropList.css';
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import { Box, Grid } from '@mui/material';
 import Icon from './Icon';
 import ICONS from '../Data/Icons.json';
+import { CanvasContext } from '../App';
 
 function getStyles() {
 	return {
@@ -11,6 +12,7 @@ function getStyles() {
 }
 
 export default function DragDropList() {
+	const { state } = useContext(CanvasContext);
 	const [search, setSearch] = useState('');
 
 	const handleChange = (e) => {
