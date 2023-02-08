@@ -18,8 +18,10 @@ export default function Toolbar() {
 				sx={{
 					width: 202,
 					height: 38,
-					backgroundColor: '#D9D9D9',
-					border: 1,
+					backgroundColor: 'white',
+					ml: '30%', 
+					mt: '8%',
+					borderRadius: '12px'
 				}}
 			>
 				<div className='icons'>

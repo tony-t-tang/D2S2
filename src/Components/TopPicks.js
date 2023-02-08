@@ -1,18 +1,19 @@
 import React, { useState, useEffect, useContext } from 'react';
 import '../Assets/Styles/TopPicks.css';
-import { Box, Grid } from '@mui/material';
+import { Box, Grid, Stack, Typography } from '@mui/material';
 import { CanvasContext } from '../App';
 import Picture from '../Components/Picture';
 import parse from 'html-react-parser';
 import axios from 'axios';
 
 const style = {
-	width: 300,
-	height: 565,
-	backgroundColor: '#D9D9D9',
-	border: 1,
+	minHeight: '100vh',
+	backgroundColor: 'white',
 	overflow: 'scroll',
 	overflowX: 'hidden',
+	ml: '4.5vh',
+	mt: '-2vh',
+	mr: '-8vh'
 };
 
 const titleStyle = {
@@ -95,29 +96,46 @@ export default function TopPicks() {
 
 	return (
 		<Box
-			sx={style}
-			className='container'
+			width='54%'
+			marginBottom='4vh'
+			marginTop='2vh'
 		>
-			<div style={titleStyle}>Top Picks</div>
-			<Grid
-				container
-				spacing={1}
-				columns={2}
+			
+			<Box
+				sx={style}
+				className='container'
 			>
-				{topPicks.map((picks) => {
-					return (
-						<Grid
-							key={picks}
-							item
-						>
-							<Picture
+				<Typography
+					marginTop='.5%'
+					color='black'
+					textAlign='center'
+					fontSize='20px'
+				>
+					Top Picks
+				</Typography>
+				<Grid
+					container
+					marginLeft='2%'
+					marginTop='.5%'
+					alignItems='center'
+					spacing={1}
+					columns={2}
+				>
+					{topPicks.map((picks) => {
+						return (
+							<Grid
 								key={picks}
-								src={picks}
-							></Picture>
-						</Grid>
-					);
-				})}
-			</Grid>
+								item
+							>
+								<Picture
+									key={picks}
+									src={picks}
+								></Picture>
+							</Grid>
+						);
+					})}
+				</Grid>
+			</Box>
 		</Box>
 	);
 }

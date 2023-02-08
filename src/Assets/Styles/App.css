@@ -1,10 +1,11 @@
 .title {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    position: absolute;
     font-weight: bold;
     font-family: Helvetica;
-    font-size: 20px;
+    font-size: 40px;
+    color: white;
+    left: 8vh;
+    top: 8vh;
 }
 
 .background {
@@ -13,10 +14,16 @@
 }
 
 .main-container {
-    justify-content: center;
     display:flex;
-    align-items: center;
-    margin-right: auto;
+}
+
+.left-container {
+    display: flex;
     text-align: center;
-    color: black
+    margin-top: 15vh;
+    margin-left: 12vh;
+}
+
+.canvas-container {
+    margin-left: 4vh;
 }
