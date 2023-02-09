@@ -40,8 +40,9 @@ export default function Canvas() {
 
 				return undefined;
 			},
+			collect: (monitor) => monitor,
 		}),
-		[state.canvas]
+		[state.canvas, state.mouseRef.current]
 	);
 
 	return (

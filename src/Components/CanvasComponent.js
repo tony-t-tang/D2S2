@@ -1,4 +1,4 @@
-import React, { useState, useRef, useContext } from 'react';
+import React, { useState, useRef, useContext, useEffect } from 'react';
 import { CanvasContext } from '../App';
 import { Rnd } from 'react-rnd';
 import ImageElement from './ImageElement';
@@ -89,6 +89,8 @@ export default function CanvasComponent(props) {
 	const onKeyDown = (event) => {
 		if (!readOnly) event.stopPropagation();
 	};
+
+	useEffect(() => {}, [state.canvas]);
 
 	return (
 		<Rnd
