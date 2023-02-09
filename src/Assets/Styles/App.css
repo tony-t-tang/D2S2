@@ -1,33 +1,29 @@
 .title {
-    padding-top: 10%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    position: absolute;
     font-weight: bold;
     font-family: Helvetica;
-    font-size: 20px;
+    font-size: 40px;
     color: white;
+    left: 8vh;
+    top: 8vh;
 }
 
 .background {
-    position: fixed;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    overflow: auto;
-    background: black;
+    color:white;
     font-family: Helvetica;
-    height: 100%;
-    width: 100%;
-    border: solid;
 }
 
 .main-container {
-    justify-content: center;
     display:flex;
-    align-items: center;
-    margin-right: auto;
+}
+
+.left-container {
+    display: flex;
     text-align: center;
-    color: black
+    margin-top: 15vh;
+    margin-left: 12vh;
+}
+
+.canvas-container {
+    margin-left: 4vh;
 }
