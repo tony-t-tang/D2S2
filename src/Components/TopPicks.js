@@ -3,15 +3,14 @@ import axios from 'axios';
 import { AnimatePresence, motion } from 'framer-motion';
 import parse from 'html-react-parser';
 import React, { useContext, useEffect, useState } from 'react';
-import ClipLoader from 'react-spinners/ClipLoader';
+import GridLoader from 'react-spinners/GridLoader';
 import { CanvasContext } from '../App';
 import '../Assets/Styles/TopPicks.css';
 import Picture from '../Components/Picture';
 
 const override = {
 	display: 'block',
-	margin: '40% auto',
-	size: '100px',
+	margin: '20% auto 10%',
 };
 
 const style = {
@@ -22,10 +21,6 @@ const style = {
 	ml: '4.5vh',
 	mt: '-2vh',
 	mr: '-8vh'
-};
-
-const titleStyle = {
-	paddingBottom: '20px',
 };
 
 export default function TopPicks() {
@@ -67,7 +62,6 @@ export default function TopPicks() {
 							? parse(state.canvas[i].content).props.children
 							: '',
 					];
-
 					elements.push(data);
 				}
 
@@ -121,33 +115,46 @@ export default function TopPicks() {
 					marginTop='.5%'
 					color='black'
 					textAlign='center'
-					fontSize='20px'
+					fontSize='30px'
 				>
 					Top Picks
 				</Typography>
 				{loading ? (
-				<ClipLoader
-					loading={loading}
-					cssOverride={override}
-					size={150}
-				/>
+					<Box sx={{display: 'block', justifyContent:'center', alignContent:'center'}}>
+						<GridLoader
+							loading={loading}
+							cssOverride={override}
+							size={90}
+						/>
+				<Typography 
+					textAlign='center' 
+					fontSize='50px'
+				>
+					Searching . . .
+				</Typography>
+					</Box>
 			) : (
 				<AnimatePresence>
 					<Grid
 						container
-						marginLeft='2%'
+						marginLeft='.5%'
 						marginTop='.5%'
 						alignItems='center'
 						spacing={1}
 						columns={2}
 					>
 						{topPicks.map((picks) => {
+							console.log(picks)
 							return (
 								<Grid
+									component={motion.div}
+									layout
 									key={picks}
 									item
 								>
 									<Picture
+										component={motion.div}
+										layout
 										key={picks}
 										src={picks}
 									></Picture>

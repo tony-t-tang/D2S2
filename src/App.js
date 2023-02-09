@@ -1,5 +1,5 @@
 import './Assets/Styles/App.css';
-import DragDrop from './Components/DragDropList';
+import DragDrop from './Components/IconList';
 import Canvas from './Components/Canvas';
 import TopPicks from './Components/TopPicks';
 import Toolbar from './Components/Toolbar';

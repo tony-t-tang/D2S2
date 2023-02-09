@@ -51,7 +51,7 @@ export default function Canvas() {
 		>
 			<Typography
 				color='white'
-				fontSize='20px'
+				fontSize='30px'
 			>
 				Canvas
 			</Typography>
