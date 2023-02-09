@@ -5,13 +5,16 @@ import TopPicks from './Components/TopPicks';
 import Toolbar from './Components/Toolbar';
 import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
-import { createContext, useState, useCallback, useEffect } from 'react';
+import { createContext, useState, useCallback, useEffect, useRef } from 'react';
 
 export const CanvasContext = createContext();
 
 function App() {
 	const [canvas, setCanvas] = useState([]);
+	const [undo, setUndo] = useState([]);
+	const [redo, setRedo] = useState([]);
 	const [activeSelection, setActiveSelection] = useState(new Set());
+	const mouseRef = useRef({ x: 0, y: 0 });
 
 	const updateCanvasData = (data) => {
 		const currentDataIndex =
@@ -21,21 +24,25 @@ function App() {
 		setCanvas([...(canvas || [])]);
 	};
 
-	const addElement = (type, src) => {
+	const addElement = (type, src, top, left) => {
 		const defaultData = {
 			type: type,
 			src: src,
 			id: `${type}__${Date.now()}`,
 			position: {
-				top: 50,
-				left: 50,
+				top: top,
+				left: left,
 			},
 			dimension: {
 				width: type === 'TEXT' ? '90' : '50',
 				height: '50',
 			},
-			content: type === 'TEXT' ? '<p>Sample Text</p>' : '',
+			content: type === 'TEXT' ? '<p>Enter Text</p>' : '',
 		};
+		if (redo.length > 0) {
+			setRedo([]);
+		}
+		setUndo([...undo, canvas]);
 		setCanvas([...canvas, { ...defaultData, type: type ?? 'TEXT' }]);
 		activeSelection.clear();
 		activeSelection.add(defaultData.id);
@@ -43,6 +50,7 @@ function App() {
 	};
 
 	const deleteElement = useCallback(() => {
+		setUndo([...undo, canvas]);
 		setCanvas([
 			...canvas.filter((data) => {
 				console.log(data);
@@ -54,11 +62,13 @@ function App() {
 			}),
 		]);
 		setActiveSelection(new Set());
-	}, [activeSelection, canvas]);
+	}, [activeSelection, canvas, undo]);
 
 	const context = {
 		actions: {
 			setCanvas,
+			setUndo,
+			setRedo,
 			setActiveSelection,
 			addElement,
 			deleteElement,
@@ -66,7 +76,10 @@ function App() {
 		},
 		state: {
 			canvas,
+			undo,
+			redo,
 			activeSelection,
+			mouseRef,
 		},
 	};
 

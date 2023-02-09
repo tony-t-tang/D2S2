@@ -4,6 +4,7 @@ import { Box, Grid } from '@mui/material';
 import ImageSearchIcon from '@mui/icons-material/ImageSearch';
 import Icon from './Icon';
 import ICONS from '../Data/Icons.json';
+import { motion } from 'framer-motion';
 
 function getStyles() {
 	return {
@@ -32,9 +33,7 @@ export default function DragDropList() {
 			<div className='search-bar'>
 				<ImageSearchIcon 
 					fontSize='medium'
-					sx={{
-						mb: '-5px'
-					}}
+					sx={{mb: '-5px'}}
 				/>
 				<input
 					className='search'
@@ -69,10 +68,14 @@ export default function DragDropList() {
 					return (
 						<Grid
 							item
+							component={motion.div}
+							layout
 							xs={6}
 							key={icon.src}
 						>
 							<Icon
+								component={motion.div}
+								layout
 								src={icon.src}
 								style={getStyles()}
 							/>
