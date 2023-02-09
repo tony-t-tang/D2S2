@@ -75,7 +75,6 @@ export default function Toolbar() {
 					<IconButton
 						sx={{ color: 'black' }}
 						tabIndex={-1}
-						onClick={() => actions.setCanvas([])}
 						onClick={handleClear}
 					>
 						<DeleteIcon />
