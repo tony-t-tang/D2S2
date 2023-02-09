@@ -1,12 +1,21 @@
 import React, { useState } from 'react';
 import Popup from '../Components/Popup';
+import { motion } from 'framer-motion';
 
 export default function Picture(props) {
 	const { src } = props;
 	const [openPopup, setOpenPopup] = useState(false);
 
 	return (
-		<div>
+		<motion.div
+			initial={{ opacity: 0 }}
+			animate={{ opacity: 1 }}
+			transition={{
+				ease: 'easeOut',
+				duration: 2,
+			}}
+			layout
+		>
 			<img
 				className={'image'}
 				src={`https://ricoimage.s3.us-east-2.amazonaws.com/OnlyImage/${src}.jpg`}
@@ -25,6 +34,6 @@ export default function Picture(props) {
 					alt=''
 				></img>
 			</Popup>
-		</div>
+		</motion.div>
 	);
 }
