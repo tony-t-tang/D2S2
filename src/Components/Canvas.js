@@ -2,15 +2,16 @@ import '../Assets/Styles/Canvas.css';
 import { CanvasContext } from '../App';
 import { useContext, useRef } from 'react';
 import { useDrop } from 'react-dnd';
-import { Box } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 import CanvasComponent from './CanvasComponent';
 
 const style = {
-	width: 500,
-	height: 565,
-	backgroundColor: '#D9D9D9',
-	border: 1,
+	width: '45vh',
+	height: 605,
+	backgroundColor: 'white',
 	position: 'relative',
+	borderRadius: '14px',
+	mt: '1vh'
 };
 
 export default function Canvas() {
@@ -46,17 +47,27 @@ export default function Canvas() {
 
 	return (
 		<Box
-			ref={(el) => {
-				drop(el);
-				canvasRef.current = el;
-			}}
-			sx={style}
-			id='container'
+			alignItems='center'
+			justifyItems='center'
 		>
-			<div>Canvas</div>
-			{state.canvas.map((canvas) => {
-				return <CanvasComponent {...canvas} />;
-			})}
+			<Typography
+				color='white'
+				fontSize='20px'
+			>
+				Canvas
+			</Typography>
+			<Box
+				ref={(el) => {
+					drop(el);
+					canvasRef.current = el;
+				}}
+				sx={style}
+				id='container'
+			>
+				{state.canvas.map((canvas) => {
+					return <CanvasComponent {...canvas} />;
+				})}
+			</Box>
 		</Box>
 	);
 }

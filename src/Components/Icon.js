@@ -1,4 +1,5 @@
 import { useDrag } from 'react-dnd';
+import { motion } from 'framer-motion';
 
 export default function Icon({ src }) {
 	const [, drag] = useDrag(
@@ -10,7 +11,8 @@ export default function Icon({ src }) {
 	);
 
 	return (
-		<img
+		<motion.img
+			layout
 			ref={drag}
 			type='image/png'
 			src={require('../Assets/Icons/' + src)}

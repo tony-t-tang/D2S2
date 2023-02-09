@@ -1,7 +1,6 @@
 import './Assets/Styles/App.css';
 import DragDrop from './Components/DragDropList';
 import Canvas from './Components/Canvas';
-import Suggestion from './Components/Suggestion';
 import TopPicks from './Components/TopPicks';
 import Toolbar from './Components/Toolbar';
 import { DndProvider } from 'react-dnd';
@@ -38,7 +37,7 @@ function App() {
 				width: type === 'TEXT' ? '90' : '50',
 				height: '50',
 			},
-			content: type === 'TEXT' ? '<p>Sample Text</p>' : '',
+			content: type === 'TEXT' ? '<p>Enter Text</p>' : '',
 		};
 		if (redo.length > 0) {
 			setRedo([]);
@@ -111,32 +110,21 @@ function App() {
 
 	return (
 		<DndProvider backend={HTML5Backend}>
-			<div className='background'>
-				<div className='title'>PSDoodle</div>
-				<CanvasContext.Provider value={context}>
-					<div className='main-container'>
-						<div>
+			<h1 className='title'>
+				PSDoodle
+			</h1>
+			<CanvasContext.Provider value={context}>
+				<div className='main-container'>
+					<div className='left-container'>
+						<DragDrop />
+						<div className='canvas-container'>
+							<Canvas />
 							<Toolbar />
-							<DragDrop />
 						</div>
-						<Canvas />
-						<Suggestion />
-						<TopPicks />
 					</div>
-					<a
-						href='https://forms.gle/QURxuNncDhVyUCR2A'
-						target='blank'
-						style={{
-							justifyContent: 'center',
-							alignItems: 'center',
-							display: 'flex',
-							fontSize: '30px',
-						}}
-					>
-						Leave Feedback
-					</a>
-				</CanvasContext.Provider>
-			</div>
+					<TopPicks />
+				</div>
+			</CanvasContext.Provider>
 		</DndProvider>
 	);
 }

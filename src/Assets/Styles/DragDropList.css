@@ -31,3 +31,7 @@
 .box-frame .icons-grid {
   direction: ltr; 
 }
+
+.search {
+  width: 13vh;
+}

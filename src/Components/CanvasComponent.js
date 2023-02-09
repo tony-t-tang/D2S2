@@ -3,7 +3,6 @@ import { CanvasContext } from '../App';
 import { Rnd } from 'react-rnd';
 import ImageElement from './ImageElement';
 import TextElement from './TextElement';
-import TextButtonElement from './TextButtonElement';
 
 const getEnableResize = () => {
 	return {
@@ -30,10 +29,10 @@ export default function CanvasComponent(props) {
 	const style = {
 		outline: 'none',
 		overflow: 'hidden',
-		border: `2px solid ${
+		border: `2px ${src === '19.png' ? 'dashed' : 'solid'} ${
 			(id && state?.activeSelection.has(id)) ||
 			showGrids ||
-			isDragged.current
+			isDragged.current || type === 'TEXT'
 				? 'black'
 				: 'transparent'
 		}`,
@@ -42,22 +41,13 @@ export default function CanvasComponent(props) {
 	const getComponent = () => {
 		if (type === 'IMAGE') {
 			return <ImageElement src={src} />;
-		} else if (src === '18.png') {
+		} else {
 			return (
 				<TextElement
 					content={content}
 					id={id}
 					readOnly={readOnly}
 				></TextElement>
-			);
-		} else {
-			return (
-				<TextButtonElement
-					sx={{ border: 'solid', borderStyle: 'dashed' }}
-					content={content}
-					id={id}
-					readOnly={readOnly}
-				></TextButtonElement>
 			);
 		}
 	};
@@ -115,7 +105,6 @@ export default function CanvasComponent(props) {
 				actions.setUndo([...state.undo, state.canvas]);
 				actions.updateCanvasData({
 					id,
-					position: { left: d.x, top: d.y },
 				});
 			}}
 			onDragStop={(e, d) => {

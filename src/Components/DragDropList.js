@@ -1,8 +1,10 @@
 import '../Assets/Styles/DragDropList.css';
 import { useState } from 'react';
 import { Box, Grid } from '@mui/material';
+import ImageSearchIcon from '@mui/icons-material/ImageSearch';
 import Icon from './Icon';
 import ICONS from '../Data/Icons.json';
+import { motion } from 'framer-motion';
 
 function getStyles() {
 	return {
@@ -23,20 +25,23 @@ export default function DragDropList() {
 			sx={{
 				width: 202,
 				height: 525,
-				backgroundColor: '#D9D9D9',
-				border: 1,
+				backgroundColor: 'white',
+				borderRadius: '14px',
+				mt: '8vh'
 			}}
 		>
-			Drag & Drop
 			<div className='search-bar'>
-				<div>
-					<input
-						type='search'
-						placeholder='Search...'
-						tabIndex={-1}
-						onChange={handleChange}
-					/>
-				</div>
+				<ImageSearchIcon 
+					fontSize='medium'
+					sx={{mb: '-5px'}}
+				/>
+				<input
+					className='search'
+					type='search'
+					placeholder='Search...'
+					tabIndex={-1}
+					onChange={handleChange}
+				/>
 			</div>
 			<Grid
 				className='icons-grid'
@@ -63,10 +68,14 @@ export default function DragDropList() {
 					return (
 						<Grid
 							item
+							component={motion.div}
+							layout
 							xs={6}
 							key={icon.src}
 						>
 							<Icon
+								component={motion.div}
+								layout
 								src={icon.src}
 								style={getStyles()}
 							/>

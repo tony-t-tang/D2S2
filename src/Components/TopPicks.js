@@ -1,18 +1,27 @@
-import React, { useState, useEffect, useContext } from 'react';
-import '../Assets/Styles/TopPicks.css';
-import { Box, Grid } from '@mui/material';
-import { CanvasContext } from '../App';
-import Picture from '../Components/Picture';
-import parse from 'html-react-parser';
+import { Box, Grid, Stack, Typography } from '@mui/material';
 import axios from 'axios';
+import { AnimatePresence, motion } from 'framer-motion';
+import parse from 'html-react-parser';
+import React, { useContext, useEffect, useState } from 'react';
+import ClipLoader from 'react-spinners/ClipLoader';
+import { CanvasContext } from '../App';
+import '../Assets/Styles/TopPicks.css';
+import Picture from '../Components/Picture';
+
+const override = {
+	display: 'block',
+	margin: '40% auto',
+	size: '100px',
+};
 
 const style = {
-	width: 300,
-	height: 565,
-	backgroundColor: '#D9D9D9',
-	border: 1,
+	minHeight: '100vh',
+	backgroundColor: 'white',
 	overflow: 'scroll',
 	overflowX: 'hidden',
+	ml: '4.5vh',
+	mt: '-2vh',
+	mr: '-8vh'
 };
 
 const titleStyle = {
@@ -21,6 +30,7 @@ const titleStyle = {
 
 export default function TopPicks() {
 	const [topPicks, setTopPicks] = useState([]);
+	const [loading, setLoading] = useState(true);
 	const [timeoutID, setTimeoutID] = useState(null);
 	const { state } = useContext(CanvasContext);
 
@@ -29,9 +39,12 @@ export default function TopPicks() {
 			clearTimeout(timeoutID);
 		}
 
+		setLoading(true);
+
 		const id = setTimeout(() => {
 			if(state.canvas.length === 0) {
 				setTopPicks([]);
+				setLoading(false);
 			}
 			else {
 				console.log('Fetching Top Picks');
@@ -82,6 +95,7 @@ export default function TopPicks() {
 
 						console.log(data);
 						setTopPicks(data);
+						setLoading(false);
 					});
 			}
 		}, 2000);
@@ -95,29 +109,55 @@ export default function TopPicks() {
 
 	return (
 		<Box
-			sx={style}
-			className='container'
+			width='54%'
+			marginBottom='4vh'
+			marginTop='2vh'
 		>
-			<div style={titleStyle}>Top Picks</div>
-			<Grid
-				container
-				spacing={1}
-				columns={2}
+			<Box
+				sx={style}
+				className='container'
 			>
-				{topPicks.map((picks) => {
-					return (
-						<Grid
-							key={picks}
-							item
-						>
-							<Picture
-								key={picks}
-								src={picks}
-							></Picture>
-						</Grid>
-					);
-				})}
-			</Grid>
+				<Typography
+					marginTop='.5%'
+					color='black'
+					textAlign='center'
+					fontSize='20px'
+				>
+					Top Picks
+				</Typography>
+				{loading ? (
+				<ClipLoader
+					loading={loading}
+					cssOverride={override}
+					size={150}
+				/>
+			) : (
+				<AnimatePresence>
+					<Grid
+						container
+						marginLeft='2%'
+						marginTop='.5%'
+						alignItems='center'
+						spacing={1}
+						columns={2}
+					>
+						{topPicks.map((picks) => {
+							return (
+								<Grid
+									key={picks}
+									item
+								>
+									<Picture
+										key={picks}
+										src={picks}
+									></Picture>
+								</Grid>
+							);
+						})}
+					</Grid>
+				</AnimatePresence>
+				)}
+			</Box>
 		</Box>
 	);
 }
