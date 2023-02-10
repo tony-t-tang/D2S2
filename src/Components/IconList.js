@@ -1,4 +1,4 @@
-import '../Assets/Styles/DragDropList.css';
+import '../Assets/Styles/IconList.css';
 import { useState } from 'react';
 import { Box, Grid } from '@mui/material';
 import ImageSearchIcon from '@mui/icons-material/ImageSearch';
@@ -23,11 +23,12 @@ export default function DragDropList() {
 		<Box
 			className='box-frame'
 			sx={{
-				width: 202,
-				height: 525,
+				minWidth: '200px',
+				width: '25%',
+				height: '20%',
 				backgroundColor: 'white',
 				borderRadius: '14px',
-				mt: '8vh'
+				mt: '11vh'
 			}}
 		>
 			<div className='search-bar'>

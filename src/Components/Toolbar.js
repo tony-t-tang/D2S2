@@ -38,7 +38,7 @@ export default function Toolbar() {
 					width: 202,
 					height: 38,
 					backgroundColor: 'white',
-					ml: '30%', 
+					ml: '26%', 
 					mt: '8%',
 					borderRadius: '12px'
 				}}

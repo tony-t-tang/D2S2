@@ -14,13 +14,12 @@ const override = {
 };
 
 const style = {
-	minHeight: '100vh',
+	height: '100vh',
+	width: '100%',
 	backgroundColor: 'white',
 	overflow: 'scroll',
 	overflowX: 'hidden',
-	ml: '4.5vh',
-	mt: '-2vh',
-	mr: '-8vh'
+	mt: '-1.9vh',
 };
 
 export default function TopPicks() {
@@ -104,7 +103,6 @@ export default function TopPicks() {
 	return (
 		<Box
 			width='54%'
-			marginBottom='4vh'
 			marginTop='2vh'
 		>
 			<Box
@@ -128,7 +126,7 @@ export default function TopPicks() {
 						/>
 				<Typography 
 					textAlign='center' 
-					fontSize='50px'
+					fontSize='40px'
 				>
 					Searching . . .
 				</Typography>
@@ -137,8 +135,7 @@ export default function TopPicks() {
 				<AnimatePresence>
 					<Grid
 						container
-						marginLeft='.5%'
-						marginTop='.5%'
+						marginLeft='.5%' marginTop='.5%'
 						alignItems='center'
 						spacing={1}
 						columns={2}

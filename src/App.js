@@ -3,6 +3,7 @@ import DragDrop from './Components/IconList';
 import Canvas from './Components/Canvas';
 import TopPicks from './Components/TopPicks';
 import Toolbar from './Components/Toolbar';
+import { Box, Link, Stack } from '@mui/material';
 import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
 import { createContext, useState, useCallback, useEffect, useRef } from 'react';
@@ -124,6 +125,15 @@ function App() {
 					</div>
 					<TopPicks />
 				</div>
+				<Link
+					fontSize={20} color='#ffffff'
+					position='absolute'
+					bottom={0} ml={3} mb={3}
+					target="_blank"
+					href='https://forms.gle/QURxuNncDhVyUCR2A'
+				>
+					Please give us feedback
+				</Link>
 			</CanvasContext.Provider>
 		</DndProvider>
 	);
