@@ -6,12 +6,12 @@ import { Box, Typography } from '@mui/material';
 import CanvasComponent from './CanvasComponent';
 
 const style = {
-	width: '45vh',
-	height: 605,
+	width: '25vw',
+	height: '60vh',
 	backgroundColor: 'white',
 	position: 'relative',
 	borderRadius: '14px',
-	mt: '1vh'
+	mt: '1vh',
 };
 
 export default function Canvas() {
@@ -53,6 +53,7 @@ export default function Canvas() {
 			<Typography
 				color='white'
 				fontSize='30px'
+				textAlign='center'
 			>
 				Canvas
 			</Typography>

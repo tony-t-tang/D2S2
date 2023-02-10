@@ -1,8 +1,7 @@
-.icons > button {
-    top: 0.3px;
+.icons {
     position: relative;
     cursor: pointer;
-    padding: 5px;
-    margin: 1px;
+    display: flex;
+    flex-direction: row;
     justify-content: space-evenly;
 }

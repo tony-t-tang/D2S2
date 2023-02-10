@@ -23,18 +23,19 @@ export default function DragDropList() {
 		<Box
 			className='box-frame'
 			sx={{
-				minWidth: '200px',
-				width: '25%',
-				height: '20%',
+				width: '12vw',
+				maxWidth: '100%',
+				minHeight: '50%',
+				height: '100vh',
+				maxHeight: '20%',
 				backgroundColor: 'white',
 				borderRadius: '14px',
-				mt: '11vh'
 			}}
 		>
 			<div className='search-bar'>
-				<ImageSearchIcon 
+				<ImageSearchIcon
 					fontSize='medium'
-					sx={{mb: '-5px'}}
+					sx={{ mb: '-5px' }}
 				/>
 				<input
 					className='search'
@@ -47,8 +48,8 @@ export default function DragDropList() {
 			<Grid
 				className='icons-grid'
 				container
-				spacing={2}
-				columns={{ xs: 4, sm: 8, md: 12 }}
+				columns={{ xs: 2, sm: 6, md: 8 }}
+				spacing={1}
 			>
 				{ICONS.filter((icon) => {
 					if (search === '') {
@@ -71,7 +72,8 @@ export default function DragDropList() {
 							item
 							component={motion.div}
 							layout
-							xs={6}
+							xs={4}
+							sm={4}
 							key={icon.src}
 						>
 							<Icon

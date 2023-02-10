@@ -1,4 +1,4 @@
-import { Box, Grid, Stack, Typography } from '@mui/material';
+import { Box, Grid, Typography } from '@mui/material';
 import axios from 'axios';
 import { AnimatePresence, motion } from 'framer-motion';
 import parse from 'html-react-parser';
@@ -36,11 +36,10 @@ export default function TopPicks() {
 		setLoading(true);
 
 		const id = setTimeout(() => {
-			if(state.canvas.length === 0) {
+			if (state.canvas.length === 0) {
 				setTopPicks([]);
 				setLoading(false);
-			}
-			else {
+			} else {
 				console.log('Fetching Top Picks');
 
 				let elements = [];
@@ -118,48 +117,54 @@ export default function TopPicks() {
 					Top Picks
 				</Typography>
 				{loading ? (
-					<Box sx={{display: 'block', justifyContent:'center', alignContent:'center'}}>
+					<Box
+						sx={{
+							display: 'block',
+							justifyContent: 'center',
+							alignContent: 'center',
+						}}
+					>
 						<GridLoader
 							loading={loading}
 							cssOverride={override}
 							size={90}
 						/>
-				<Typography 
-					textAlign='center' 
-					fontSize='40px'
-				>
-					Searching . . .
-				</Typography>
+						<Typography
+							textAlign='center'
+							fontSize='40px'
+						>
+							Searching . . .
+						</Typography>
 					</Box>
-			) : (
-				<AnimatePresence>
-					<Grid
-						container
-						marginLeft='.5%' marginTop='.5%'
-						alignItems='center'
-						spacing={1}
-						columns={2}
-					>
-						{topPicks.map((picks) => {
-							console.log(picks)
-							return (
-								<Grid
-									component={motion.div}
-									layout
-									key={picks}
-									item
-								>
-									<Picture
+				) : (
+					<AnimatePresence>
+						<Grid
+							container
+							justifyContent={'center'}
+							alignItems='center'
+							spacing={1}
+							columns={2}
+						>
+							{topPicks.map((picks) => {
+								console.log(picks);
+								return (
+									<Grid
 										component={motion.div}
 										layout
 										key={picks}
-										src={picks}
-									></Picture>
-								</Grid>
-							);
-						})}
-					</Grid>
-				</AnimatePresence>
+										item
+									>
+										<Picture
+											component={motion.div}
+											layout
+											key={picks}
+											src={picks}
+										></Picture>
+									</Grid>
+								);
+							})}
+						</Grid>
+					</AnimatePresence>
 				)}
 			</Box>
 		</Box>

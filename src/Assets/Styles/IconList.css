@@ -1,5 +1,5 @@
 /*scroll*/
-.box-frame{
+.box-frame {
     overflow:scroll;
     overflow-x:hidden;
     direction: rtl;
@@ -25,13 +25,14 @@
 
 .box-frame .search-bar {
   direction: ltr;
-  padding: 10px;
+  padding: 5px 0px;
 }
 
 .box-frame .icons-grid {
+  justify-content: space-between;
   direction: ltr; 
 }
 
 .search {
-  width: 13vh;
+  width: 8vw;
 }
