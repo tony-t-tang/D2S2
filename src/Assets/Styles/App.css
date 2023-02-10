@@ -14,16 +14,28 @@
 }
 
 .main-container {
-    display:flex;
+    display: flex;
+    height: 100%;
+    width: 100%;
 }
 
 .left-container {
     display: flex;
     text-align: center;
-    margin-top: 15vh;
     margin-left: 12vh;
+    margin-right: 2vw;
+}
+
+.list-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .canvas-container {
-    margin-left: 4vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-left: 2vw;
 }

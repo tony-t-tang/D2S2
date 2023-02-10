@@ -1,4 +1,4 @@
-import { Box, Grid, Stack, Typography } from '@mui/material';
+import { Box, Grid, Typography } from '@mui/material';
 import axios from 'axios';
 import { AnimatePresence, motion } from 'framer-motion';
 import parse from 'html-react-parser';
@@ -14,13 +14,12 @@ const override = {
 };
 
 const style = {
-	minHeight: '100vh',
+	height: '100vh',
+	width: '100%',
 	backgroundColor: 'white',
 	overflow: 'scroll',
 	overflowX: 'hidden',
-	ml: '4.5vh',
-	mt: '-2vh',
-	mr: '-8vh'
+	mt: '-1.9vh',
 };
 
 export default function TopPicks() {
@@ -37,11 +36,10 @@ export default function TopPicks() {
 		setLoading(true);
 
 		const id = setTimeout(() => {
-			if(state.canvas.length === 0) {
+			if (state.canvas.length === 0) {
 				setTopPicks([]);
 				setLoading(false);
-			}
-			else {
+			} else {
 				console.log('Fetching Top Picks');
 
 				let elements = [];
@@ -104,7 +102,6 @@ export default function TopPicks() {
 	return (
 		<Box
 			width='54%'
-			marginBottom='4vh'
 			marginTop='2vh'
 		>
 			<Box
@@ -120,49 +117,54 @@ export default function TopPicks() {
 					Top Picks
 				</Typography>
 				{loading ? (
-					<Box sx={{display: 'block', justifyContent:'center', alignContent:'center'}}>
+					<Box
+						sx={{
+							display: 'block',
+							justifyContent: 'center',
+							alignContent: 'center',
+						}}
+					>
 						<GridLoader
 							loading={loading}
 							cssOverride={override}
 							size={90}
 						/>
-				<Typography 
-					textAlign='center' 
-					fontSize='50px'
-				>
-					Searching . . .
-				</Typography>
+						<Typography
+							textAlign='center'
+							fontSize='40px'
+						>
+							Searching . . .
+						</Typography>
 					</Box>
-			) : (
-				<AnimatePresence>
-					<Grid
-						container
-						marginLeft='.5%'
-						marginTop='.5%'
-						alignItems='center'
-						spacing={1}
-						columns={2}
-					>
-						{topPicks.map((picks) => {
-							console.log(picks)
-							return (
-								<Grid
-									component={motion.div}
-									layout
-									key={picks}
-									item
-								>
-									<Picture
+				) : (
+					<AnimatePresence>
+						<Grid
+							container
+							justifyContent={'center'}
+							alignItems='center'
+							spacing={1}
+							columns={2}
+						>
+							{topPicks.map((picks) => {
+								console.log(picks);
+								return (
+									<Grid
 										component={motion.div}
 										layout
 										key={picks}
-										src={picks}
-									></Picture>
-								</Grid>
-							);
-						})}
-					</Grid>
-				</AnimatePresence>
+										item
+									>
+										<Picture
+											component={motion.div}
+											layout
+											key={picks}
+											src={picks}
+										></Picture>
+									</Grid>
+								);
+							})}
+						</Grid>
+					</AnimatePresence>
 				)}
 			</Box>
 		</Box>

@@ -1,8 +1,9 @@
 import './Assets/Styles/App.css';
-import DragDrop from './Components/IconList';
+import IconList from './Components/IconList';
 import Canvas from './Components/Canvas';
 import TopPicks from './Components/TopPicks';
 import Toolbar from './Components/Toolbar';
+import { Link } from '@mui/material';
 import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
 import { createContext, useState, useCallback, useEffect, useRef } from 'react';
@@ -110,13 +111,13 @@ function App() {
 
 	return (
 		<DndProvider backend={HTML5Backend}>
-			<h1 className='title'>
-				PSDoodle
-			</h1>
+			<h1 className='title'>PSDoodle</h1>
 			<CanvasContext.Provider value={context}>
 				<div className='main-container'>
 					<div className='left-container'>
-						<DragDrop />
+						<div className='list-container'>
+							<IconList />
+						</div>
 						<div className='canvas-container'>
 							<Canvas />
 							<Toolbar />
@@ -124,6 +125,18 @@ function App() {
 					</div>
 					<TopPicks />
 				</div>
+				<Link
+					fontSize={20}
+					color='#ffffff'
+					position='absolute'
+					bottom={0}
+					ml={3}
+					mb={3}
+					target='_blank'
+					href='https://forms.gle/QURxuNncDhVyUCR2A'
+				>
+					Please give us feedback
+				</Link>
 			</CanvasContext.Provider>
 		</DndProvider>
 	);
