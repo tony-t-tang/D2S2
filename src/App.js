@@ -111,9 +111,10 @@ function App() {
 
 	return (
 		<DndProvider backend={HTML5Backend}>
-			<h1 className='title'>PSDoodle</h1>
+			<h1 className='title'>Drag ‘n’ Search</h1>
 			<CanvasContext.Provider value={context}>
 				<div className='main-container'>
+					<p className='tag'>Quickly finds relevant Android screen designs</p>
 					<div className='left-container'>
 						<div className='list-container'>
 							<IconList />

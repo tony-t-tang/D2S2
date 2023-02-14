@@ -5,9 +5,17 @@
     font-size: 40px;
     color: white;
     left: 8vh;
+    top: 5vh;
+}
+.tag {
+    position: absolute;
+    font-weight: bold;
+    font-family: Helvetica;
+    font-size: 24px;
+    color: white;
+    left: 8vh;
     top: 8vh;
 }
-
 .background {
     color:white;
     font-family: Helvetica;
