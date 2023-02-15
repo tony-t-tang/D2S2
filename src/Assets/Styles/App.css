@@ -30,12 +30,14 @@
 .left-container {
     display: flex;
     text-align: center;
+    margin-top: 4vh;
     margin-left: 12vh;
     margin-right: 2vw;
 }
 
 .list-container {
     display: flex;
+    margin-top: 4vh;
     flex-direction: column;
     justify-content: center;
 }

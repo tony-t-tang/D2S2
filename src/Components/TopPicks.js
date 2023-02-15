@@ -108,14 +108,21 @@ export default function TopPicks() {
 				sx={style}
 				className='container'
 			>
-				<Typography
-					marginTop='.5%'
-					color='black'
-					textAlign='center'
-					fontSize='2vw'
+				<Box
+					backgroundColor='#151733'
+					height='10vh'
 				>
-					Top Picks
-				</Typography>
+					<Typography
+						textAlign='center'
+						position='absolute'
+						marginTop='2vh'
+						marginLeft='20vw'
+						color='white'
+						fontSize='2vw'
+					>
+						Top Picks
+					</Typography>
+				</Box>
 				{loading ? (
 					<Box
 						sx={{
@@ -144,6 +151,7 @@ export default function TopPicks() {
 							container
 							justifyContent={'center'}
 							alignItems='center'
+							marginTop='5.5vh'
 							spacing={1}
 							columns={2}
 						>
