@@ -16,7 +16,7 @@ export default function Icon({ src }) {
 			ref={drag}
 			type='image/png'
 			src={require('../Assets/Icons/' + src)}
-			width='45vw'
+			width='40vw'
 			alt=''
 		/>
 	);

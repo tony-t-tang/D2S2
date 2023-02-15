@@ -35,7 +35,7 @@ export default function DragDropList() {
 			<div className='search-bar'>
 				<ImageSearchIcon
 					fontSize='medium'
-					sx={{ mb: '-5px' }}
+					sx={{ mb: '-5px', width: '1.8vw', height: '1.2vw' }}
 				/>
 				<input
 					className='search'
