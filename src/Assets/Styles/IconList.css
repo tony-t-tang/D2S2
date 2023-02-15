@@ -25,7 +25,8 @@
 
 .box-frame .search-bar {
   direction: ltr;
-  padding: 5px 0px;
+  margin-bottom: 8%;
+  margin-top: 8%;
 }
 
 .box-frame .icons-grid {
@@ -37,5 +38,4 @@
   width: 8vw;
   height: 1.2vw;
   font-size: 0.8vw;
-  margin-bottom: 5%;
 }
