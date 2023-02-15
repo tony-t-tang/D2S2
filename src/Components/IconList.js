@@ -1,16 +1,10 @@
 import '../Assets/Styles/IconList.css';
 import { useState } from 'react';
-import { Box, Grid } from '@mui/material';
+import { Box, Grid, Typography } from '@mui/material';
 import ImageSearchIcon from '@mui/icons-material/ImageSearch';
 import Icon from './Icon';
 import ICONS from '../Data/Icons.json';
 import { motion } from 'framer-motion';
-
-function getStyles() {
-	return {
-		position: 'relative',
-	};
-}
 
 export default function DragDropList() {
 	const [search, setSearch] = useState('');
@@ -35,7 +29,7 @@ export default function DragDropList() {
 			<div className='search-bar'>
 				<ImageSearchIcon
 					fontSize='medium'
-					sx={{ mb: '-5px' }}
+					sx={{ mb: '-3%', width: '1.8vw', height: '1.2vw' }}
 				/>
 				<input
 					className='search'
@@ -48,8 +42,8 @@ export default function DragDropList() {
 			<Grid
 				className='icons-grid'
 				container
-				columns={{ xs: 2, sm: 6, md: 8 }}
-				spacing={1}
+				columns={{ xs: 2, sm: 2, md: 6}}
+				spacing={0}
 			>
 				{ICONS.filter((icon) => {
 					if (search === '') {
@@ -72,17 +66,22 @@ export default function DragDropList() {
 							item
 							component={motion.div}
 							layout
-							xs={4}
-							sm={4}
+							xs={2}
+							sm={3}
+							style={{ marginBottom: '4%' }}
 							key={icon.src}
 						>
 							<Icon
 								component={motion.div}
 								layout
 								src={icon.src}
-								style={getStyles()}
 							/>
-							<p>{icon.name[0]}</p>
+							<Typography
+								textAlign='center'
+								fontSize='1vw'
+							>
+								{icon.name[0]}
+							</Typography>
 						</Grid>
 					);
 				})}

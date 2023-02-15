@@ -1,6 +1,6 @@
 import '../Assets/Styles/Canvas.css';
 import { CanvasContext } from '../App';
-import { useContext, useRef } from 'react';
+import { useContext, useEffect } from 'react';
 import { useDrop } from 'react-dnd';
 import { Box, Typography } from '@mui/material';
 import CanvasComponent from './CanvasComponent';
@@ -16,14 +16,13 @@ const style = {
 
 export default function Canvas() {
 	const { actions, state } = useContext(CanvasContext);
-	const canvasRef = useRef(null);
 
 	const [, drop] = useDrop(
 		() => ({
 			accept: 'image',
 			hover: (item, monitor) => {
 				const offset = monitor.getSourceClientOffset();
-				const rect = canvasRef.current.getBoundingClientRect();
+				const rect = state.canvasRef.current.getBoundingClientRect();
 
 				state.mouseRef.current = {
 					x: offset.x - rect.left,
@@ -52,15 +51,16 @@ export default function Canvas() {
 		>
 			<Typography
 				color='white'
-				fontSize='30px'
+				fontSize='2vw'
 				textAlign='center'
+				paddingTop='2vw'
 			>
 				Canvas
 			</Typography>
 			<Box
 				ref={(el) => {
 					drop(el);
-					canvasRef.current = el;
+					state.canvasRef.current = el;
 				}}
 				sx={style}
 				id='container'

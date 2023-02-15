@@ -9,7 +9,7 @@ import '../Assets/Styles/TopPicks.css';
 import Picture from '../Components/Picture';
 
 const override = {
-	display: 'block',
+	display: 'flex',
 	margin: '20% auto 10%',
 };
 
@@ -64,28 +64,28 @@ export default function TopPicks() {
 				}
 
 				const headers = {
-					canvasHeight: '565',
-					canvasWidth: '500',
+					canvasHeight: JSON.stringify(
+						state.canvasRef.current.clientHeight
+					),
+					canvasWidth: JSON.stringify(
+						state.canvasRef.current.clientWidth
+					),
 					elements: JSON.stringify(elements),
 				};
 				const url = 'http://pixeltoapp.com/getTopPicks/';
 
 				console.log(headers);
-
 				axios
 					.get(url, {
 						headers,
 					})
 					.then((response) => {
-						console.log(response);
-
 						let data = [];
 
 						for (let i = 0; i < 100; i++) {
 							data.push(response.data[i]);
 						}
 
-						console.log(data);
 						setTopPicks(data);
 						setLoading(false);
 					});
@@ -112,14 +112,16 @@ export default function TopPicks() {
 					marginTop='.5%'
 					color='black'
 					textAlign='center'
-					fontSize='30px'
+					fontSize='2vw'
 				>
 					Top Picks
 				</Typography>
 				{loading ? (
 					<Box
 						sx={{
-							display: 'block',
+							display: 'flex',
+							flexDirection: 'column',
+							height:'80%',
 							justifyContent: 'center',
 							alignContent: 'center',
 						}}
@@ -127,11 +129,11 @@ export default function TopPicks() {
 						<GridLoader
 							loading={loading}
 							cssOverride={override}
-							size={90}
+							size={'3vw'}
 						/>
 						<Typography
 							textAlign='center'
-							fontSize='40px'
+							fontSize='2vw'
 						>
 							Searching . . .
 						</Typography>
@@ -146,7 +148,6 @@ export default function TopPicks() {
 							columns={2}
 						>
 							{topPicks.map((picks) => {
-								console.log(picks);
 								return (
 									<Grid
 										component={motion.div}
