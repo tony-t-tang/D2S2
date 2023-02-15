@@ -16,6 +16,7 @@ function App() {
 	const [redo, setRedo] = useState([]);
 	const [activeSelection, setActiveSelection] = useState(new Set());
 	const mouseRef = useRef({ x: 0, y: 0 });
+	const canvasRef = useRef(null);
 
 	const updateCanvasData = (data) => {
 		const currentDataIndex =
@@ -81,6 +82,7 @@ function App() {
 			redo,
 			activeSelection,
 			mouseRef,
+			canvasRef,
 		},
 	};
 

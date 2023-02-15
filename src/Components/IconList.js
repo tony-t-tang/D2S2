@@ -1,6 +1,6 @@
 import '../Assets/Styles/IconList.css';
 import { useState } from 'react';
-import { Box, Grid } from '@mui/material';
+import { Box, Grid, Typography } from '@mui/material';
 import ImageSearchIcon from '@mui/icons-material/ImageSearch';
 import Icon from './Icon';
 import ICONS from '../Data/Icons.json';
@@ -82,7 +82,9 @@ export default function DragDropList() {
 								src={icon.src}
 								style={getStyles()}
 							/>
-							<p>{icon.name[0]}</p>
+							<Typography textAlign='center' fontSize='1vw'>
+								{icon.name[0]}
+							</Typography>
 						</Grid>
 					);
 				})}

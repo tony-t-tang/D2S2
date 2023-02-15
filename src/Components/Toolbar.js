@@ -11,7 +11,7 @@ import { CanvasContext } from '../App';
 
 const iconStyle = {
 	color: 'black',
-	height: '3vh',
+	height: '2.5vh',
 	width: '2vw',
 };
 
@@ -38,52 +38,53 @@ export default function Toolbar() {
 	};
 
 	return (
-		<div className='toolbar'>
-			<Box
-				sx={{
-					backgroundColor: 'white',
-					borderRadius: '12px',
-					mt: '8%',
-				}}
-			>
-				<div className='icons'>
-					<IconButton
-						sx={iconStyle}
-						tabIndex={-1}
-						onClick={() => actions.addElement('TEXT', '18.png')}
-					>
-						<TitleIcon />
-					</IconButton>
-					<IconButton
-						sx={iconStyle}
-						tabIndex={-1}
-						onClick={() => actions.addElement('TEXT', '19.png')}
-					>
-						<CallToActionOutlinedIcon />
-					</IconButton>
-					<IconButton
-						sx={iconStyle}
-						tabIndex={-1}
-						onClick={handleUndo}
-					>
-						<UndoIcon />
-					</IconButton>
-					<IconButton
-						sx={iconStyle}
-						tabIndex={-1}
-						onClick={handleRedo}
-					>
-						<RedoIcon />
-					</IconButton>
-					<IconButton
-						sx={iconStyle}
-						tabIndex={-1}
-						onClick={handleClear}
-					>
-						<DeleteIcon />
-					</IconButton>
-				</div>
-			</Box>
-		</div>
+		<Box
+			sx={{
+				backgroundColor: 'white',
+				borderRadius: '12px',
+				mt: '8%',
+				display: 'flex',
+				width: '50%',
+				padding: '5px'
+			}}
+		>
+			<div className='icons'>
+				<IconButton
+					sx={iconStyle}
+					tabIndex={-1}
+					onClick={() => actions.addElement('TEXT', '18.png')}
+				>
+					<TitleIcon sx={iconStyle} />
+				</IconButton>
+				<IconButton
+					sx={iconStyle}
+					tabIndex={-1}
+					onClick={() => actions.addElement('TEXT', '19.png')}
+				>
+					<CallToActionOutlinedIcon sx={iconStyle} />
+				</IconButton>
+				<IconButton
+					sx={iconStyle}
+					tabIndex={-1}
+					onClick={handleUndo}
+				>
+					<UndoIcon sx={iconStyle} />
+				</IconButton>
+				<IconButton
+					sx={iconStyle}
+					tabIndex={-1}
+					onClick={handleRedo}
+				>
+					<RedoIcon sx={iconStyle} />
+				</IconButton>
+				<IconButton
+					sx={iconStyle}
+					tabIndex={-1}
+					onClick={handleClear}
+				>
+					<DeleteIcon sx={iconStyle} />
+				</IconButton>
+			</div>
+		</Box>
 	);
 }

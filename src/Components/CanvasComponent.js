@@ -32,7 +32,8 @@ export default function CanvasComponent(props) {
 		border: `2px ${src === '19.png' ? 'dashed' : 'solid'} ${
 			(id && state?.activeSelection.has(id)) ||
 			showGrids ||
-			isDragged.current || type === 'TEXT'
+			isDragged.current ||
+			type === 'TEXT'
 				? 'black'
 				: 'transparent'
 		}`,
@@ -90,8 +91,6 @@ export default function CanvasComponent(props) {
 		if (!readOnly) event.stopPropagation();
 	};
 
-	useEffect(() => {}, [state.canvas]);
-
 	return (
 		<Rnd
 			style={style}
@@ -111,7 +110,10 @@ export default function CanvasComponent(props) {
 				isDragged.current = false;
 				actions.updateCanvasData({
 					id,
-					position: { left: d.x, top: d.y },
+					position: {
+						left: d.x,
+						top: d.y,
+					},
 				});
 			}}
 			onResizeStart={() => {
@@ -130,8 +132,8 @@ export default function CanvasComponent(props) {
 					position: { top: position.y, left: position.x },
 				});
 			}}
-			minWidth={50}
-			minHeight={50}
+			width={dimension.width}
+			height={dimension.height}
 			onMouseEnter={onMouseEnter}
 			onMouseLeave={onMouseLeave}
 			onClick={onClick}

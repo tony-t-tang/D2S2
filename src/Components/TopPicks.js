@@ -64,14 +64,17 @@ export default function TopPicks() {
 				}
 
 				const headers = {
-					canvasHeight: '565',
-					canvasWidth: '500',
+					canvasHeight: JSON.stringify(
+						state.canvasRef.current.clientHeight
+					),
+					canvasWidth: JSON.stringify(
+						state.canvasRef.current.clientWidth
+					),
 					elements: JSON.stringify(elements),
 				};
 				const url = 'http://pixeltoapp.com/getTopPicks/';
 
 				console.log(headers);
-
 				axios
 					.get(url, {
 						headers,
@@ -112,7 +115,7 @@ export default function TopPicks() {
 					marginTop='.5%'
 					color='black'
 					textAlign='center'
-					fontSize='30px'
+					fontSize='2vw'
 				>
 					Top Picks
 				</Typography>
