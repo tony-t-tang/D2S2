@@ -116,10 +116,16 @@ export default function CanvasComponent(props) {
 					},
 				});
 			}}
-			onResizeStart={() => {
+			onResizeStart={(e, direction, ref) => {
 				actions.setUndo([...state.undo, state.canvas]);
+				state.activeSelection.clear();
+				state.activeSelection.add(id);
+				actions.setActiveSelection(new Set(state.activeSelection));
+				actions.updateCanvasData({
+					id,
+				});
 			}}
-			onResize={(e, direction, ref, delta, position) => {
+			onResizeStop={(e, direction, ref, delta, position) => {
 				state.activeSelection.clear();
 				state.activeSelection.add(id);
 				actions.setActiveSelection(new Set(state.activeSelection));
