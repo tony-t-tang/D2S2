@@ -32,8 +32,12 @@ function App() {
 			src: src,
 			id: `${type}__${Date.now()}`,
 			position: {
-				top: top,
-				left: left,
+				top: top ? top : canvasRef.current.clientHeight / 2 - 25,
+				left: left
+					? left
+					: canvasRef.current.clientWidth / 2 - ((type === 'TEXT')
+					? 45
+					: 25),
 			},
 			dimension: {
 				width: type === 'TEXT' ? '90' : '50',
@@ -116,7 +120,9 @@ function App() {
 			<h1 className='title'>Drag ‘n’ Search</h1>
 			<CanvasContext.Provider value={context}>
 				<div className='main-container'>
-					<p className='tag'>Quickly finds relevant Android screen designs</p>
+					<p className='tag'>
+						Quickly finds relevant Android screen designs
+					</p>
 					<div className='left-container'>
 						<div className='list-container'>
 							<IconList />
