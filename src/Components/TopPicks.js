@@ -119,7 +119,9 @@ export default function TopPicks() {
 				{loading ? (
 					<Box
 						sx={{
-							display: 'block',
+							display: 'flex',
+							flexDirection: 'column',
+							height:'80%',
 							justifyContent: 'center',
 							alignContent: 'center',
 						}}
