@@ -18,7 +18,7 @@ export default function Picture(props) {
 		>
 			<img
 				className={'image'}
-				src={`https://ricoimage.s3.us-east-2.amazonaws.com/OnlyImage/${src}.jpg`}
+				src={`https://ricoimage.s3.us-east-2.amazonaws.com/thumbnails/${src}.jpg`}
 				alt=''
 				onClick={() => setOpenPopup(true)}
 			></img>
