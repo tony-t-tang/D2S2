@@ -1,206 +1,314 @@
 [
     {
         "src":"0.png",
+        "type": "IMAGE",
+        "content": "",
         "name":["Arrow Backward", "Back", "Left", "Previous"]
     },
     {
         "src":"1.png",
+        "type": "IMAGE",
+        "content": "",
         "name":["Close", "Cancel", "Clear", "Delete"]
     },
     {
         "src":"2.png",
+        "type": "IMAGE",
+        "content": "",
         "name":["Avatar", "Person", "Account"]
     },
     {
         "src":"3.png",
+        "type": "IMAGE",
+        "content": "",
         "name":["Checkbox", "Check", "Ok", "Done"]
     },
     {
         "src":"4.png",
+        "type": "IMAGE",
+        "content": "",
         "name":["Arrow Forward", "Forward", "Next", "Right"]
     },
     {
         "src":"5.png",
+        "type": "IMAGE",
+        "content": "",
         "name":["Menu", "Hamburger", "Drawer", "Navigation"]
     },
     {
         "src":"6.png",
+        "type": "IMAGE",
+        "content": "",
         "name":["Play", "Play Arrow", "Pause", "Video"]
     },
     {
         "src":"7.png",
+        "type": "IMAGE",
+        "content": "",
         "name":["Plus", "Add", "Create", "Expand", "New Tab"]
     },
     {
         "src":"8.png",
+        "type": "IMAGE",
+        "content": "",
         "name":["Search", "Find", "Magnifying Glass"]
     },
     {
         "src":"9.png",
+        "type": "IMAGE",
+        "content": "",
         "name":["Setting", "Gear", "Preference", "Option"]
     },
     {
         "src":"10.png",
+        "type": "IMAGE",
+        "content": "",
         "name":["Share", "Menu"]
     },
     {
         "src":"11.png",
+        "type": "IMAGE",
+        "content": "",
         "name":["Slider"]
     },
     {
         "src":"12.png",
+        "type": "IMAGE",
+        "content": "",
         "name":["Switch", "On", "Off"]
     },
     {
         "src":"13.png",
+        "type": "IMAGE",
+        "content": "",
         "name":["Container"]
     },
     {
         "src":"14.png",
+        "type": "IMAGE",
+        "content": "",
         "name":["Star", "Rate", "Rating", "Favorite"]
     },
     {
         "src":"15.png",
+        "type": "IMAGE",
+        "content": "",
         "name":["Home", "House", "Building"]
     },
     {
         "src":"16.png",
+        "type": "IMAGE",
+        "content": "",
         "name":["Camera", "Photo", "Instagram"]
     },
     {
         "src":"17.png",
+        "type": "IMAGE",
+        "content": "",
         "name":["Envelope", "Email", "Inbox", "Share"]
     },
     {
+        "src":"19.png",
+        "type": "TEXT",
+        "content": "<p>Text Button</p>",
+        "name":["Text Button", "Text", "Button"]
+    },
+    {
         "src":"20.png",
+        "type": "IMAGE",
+        "content": "",
         "name":["Image", "Background Image"]
     },
     {
         "src":"21.png",
+        "type": "IMAGE",
+        "content": "",
         "name":["Radio Button"]
     },
     {
         "src":"22.png",
+        "type": "IMAGE",
+        "content": "",
         "name":["Date Picker"]
     },
     {
         "src":"23.png",
+        "type": "IMAGE",
+        "content": "",
         "name":["Map View"]
     },
     {
         "src":"24.png",
+        "type": "IMAGE",
+        "content": "",
         "name":["Number Stepper"]
     },
     {
         "src":"25.png",
+        "type": "IMAGE",
+        "content": "",
         "name":["Video"]
     },
     {
         "src":"26.png",
+        "type": "IMAGE",
+        "content": "",
         "name":["Input"]
     },
     {
         "src":"27.png",
+        "type": "IMAGE",
+        "content": "",
         "name":["More", "Dots", "Overflow", "Three"]
     },
     {
         "src":"28.png",
+        "type": "IMAGE",
+        "content": "",
         "name":["Favorites", "Like", "Upvote", "Heart"]
     },
     {
         "src":"29.png",
+        "type": "IMAGE",
+        "content": "",
         "name":["Refresh", "Reload", "Sync", "Reset"]
     },
     {
         "src":"30.png",
+        "type": "IMAGE",
+        "content": "",
         "name":["Info", "Information", "About", "Infos"]
     },
     {
         "src":"31.png",
+        "type": "IMAGE",
+        "content": "",
         "name":["Edit", "Create", "Compose"]
     },
     {
         "src":"32.png",
+        "type": "IMAGE",
+        "content": "",
         "name":["Chat", "Comment", "Message"]
     },
     {
         "src":"33.png",
+        "type": "IMAGE",
+        "content": "",
         "name":["Expand", "More"]
     },
     {
         "src":"34.png",
+        "type": "IMAGE",
+        "content": "",
         "name":["Help", "Question Mark", "HowTo", "Info"]
     },
     {
         "src":"35.png",
+        "type": "IMAGE",
+        "content": "",
         "name":["Facebook", "FB", "Share", "Login"]
     },
     {
         "src":"36.png",
+        "type": "IMAGE",
+        "content": "",
         "name":["Volume", "Mute", "Sound", "Speak"]
     },
     {
         "src":"37.png",
+        "type": "IMAGE",
+        "content": "",
         "name":["Pause", "Play", "Stop", "Player"]
     },
     {
         "src":"38.png",
+        "type": "IMAGE",
+        "content": "",
         "name":["Microphone", "Voice", "Mic", "Speech"]
     },
     {
         "src":"39.png",
+        "type": "IMAGE",
+        "content": "",
         "name":["Delete", "Trash", "Remove", "Clear"]
     },
     {
         "src":"40.png",
+        "type": "IMAGE",
+        "content": "",
         "name":["Notification", "Alert", "Bell", "Notify"]
     },
     {
         "src":"41.png",
+        "type": "IMAGE",
+        "content": "",
         "name":["Sort", "Filter"]
     },
     {
         "src":"42.png",
+        "type": "IMAGE",
+        "content": "",
         "name":["Twitter", "Share", "TW", "Login"]
     },
     {
         "src":"43.png",
+        "type": "IMAGE",
+        "content": "",
         "name":["Location", "Pin", "Place"]
     },
     {
         "src":"44.png",
+        "type": "IMAGE",
+        "content": "",
         "name":["Bookmark", "Save", "Wishlist", "MySection"]
     },
     {
         "src":"45.png",
+        "type": "IMAGE",
+        "content": "",
         "name":["Emoji", "Trending", "Emotion"]
     },
     {
         "src":"46.png",
+        "type": "IMAGE",
+        "content": "",
         "name":["Silder", "Filter", "Settings"]
     },
     {
         "src":"47.png",
+        "type": "IMAGE",
+        "content": "",
         "name":["Call", "Phone", "Telephone", "Dialpad"]
     },
     {
         "src":"48.png",
+        "type": "IMAGE",
+        "content": "",
         "name":["Minus", "Hide", "Down", "Decrement"]
     },
     {
         "src":"49.png",
+        "type": "IMAGE",
+        "content": "",
         "name":["Download", "Save", "Get App"]
     },
     {
         "src":"50.png",
+        "type": "IMAGE",
+        "content": "",
         "name":["Checkout", "Shopping", "Cart", "Shop"]
     },
     {
         "src":"51.png",
+        "type": "IMAGE",
+        "content": "",
         "name":["Lists", "Bullets", "Option"]
     },
     {
         "src":"52.png",
+        "type": "IMAGE",
+        "content": "",
         "name":["Undo", "Retake", "Back", "Reset"]
     }
 ]

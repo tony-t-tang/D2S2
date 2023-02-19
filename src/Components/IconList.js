@@ -75,6 +75,8 @@ export default function DragDropList() {
 								component={motion.div}
 								layout
 								src={icon.src}
+								type={icon.type}
+								content={icon.content}
 							/>
 							<Typography
 								textAlign='center'

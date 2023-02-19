@@ -26,78 +26,111 @@ export default function TopPicks() {
 	const [topPicks, setTopPicks] = useState([]);
 	const [loading, setLoading] = useState(true);
 	const [timeoutID, setTimeoutID] = useState(null);
-	const { state } = useContext(CanvasContext);
+	const { actions, state } = useContext(CanvasContext);
 
 	useEffect(() => {
+		if (state.canvas.length !== 0 && state.activeSelection.size !== 0) {
+			let active = state.canvas.filter((element) => {
+				return state.activeSelection.has(element.id);
+			})[0];
+			let comparison = state.threshold.filter((element) => {
+				return state.activeSelection.has(element.id);
+			})[0];
+
+			if (
+				active.content !== comparison.content ||
+				Math.abs(active.position.left - comparison.position.left) >=
+					10 ||
+				Math.abs(active.position.top - comparison.position.top) >= 10 ||
+				Math.abs(
+					parseInt(active.dimension.width) -
+						parseInt(comparison.dimension.width)
+				) >= 10 ||
+				Math.abs(
+					parseInt(active.dimension.height) -
+						parseInt(comparison.dimension.height)
+				) >= 10
+			) {
+				actions.setThreshold(state.canvas);
+			}
+		}
+	}, [state.canvas, state.activeSelection]);
+
+	useEffect(() => {
+		let id;
 		if (timeoutID) {
 			clearTimeout(timeoutID);
 		}
 
-		setLoading(true);
+		if (state.canvas.length === 0) {
+			setTopPicks([]);
+			setLoading(false);
+		} else {
+			setLoading(true);
+			id = setTimeout(() => {
+				if (state.canvas.length === 0) {
+					setTopPicks([]);
+					setLoading(false);
+				} else {
+					console.log('Fetching Top Picks');
 
-		const id = setTimeout(() => {
-			if (state.canvas.length === 0) {
-				setTopPicks([]);
-				setLoading(false);
-			} else {
-				console.log('Fetching Top Picks');
+					let elements = [];
 
-				let elements = [];
+					for (let i = 0; i < state.canvas.length; i++) {
+						let data = [
+							state.canvas[i].position.left,
+							state.canvas[i].position.top,
+							parseInt(state.canvas[i].dimension.width),
+							parseInt(state.canvas[i].dimension.height),
+							parseInt(
+								state.canvas[i].src.slice(
+									0,
+									state.canvas[i].src.length - 4
+								)
+							),
+							state.canvas[i].type === 'TEXT'
+								? parse(state.canvas[i].content).props.children
+								: '',
+						];
+						elements.push(data);
+					}
 
-				for (let i = 0; i < state.canvas.length; i++) {
-					let data = [
-						state.canvas[i].position.left,
-						state.canvas[i].position.top,
-						parseInt(state.canvas[i].dimension.width),
-						parseInt(state.canvas[i].dimension.height),
-						parseInt(
-							state.canvas[i].src.slice(
-								0,
-								state.canvas[i].src.length - 4
-							)
+					const headers = {
+						canvasHeight: JSON.stringify(
+							state.canvasRef.current.clientHeight
 						),
-						state.canvas[i].type === 'TEXT'
-							? parse(state.canvas[i].content).props.children
-							: '',
-					];
-					elements.push(data);
+						canvasWidth: JSON.stringify(
+							state.canvasRef.current.clientWidth
+						),
+						elements: JSON.stringify(elements),
+					};
+					const url = 'http://pixeltoapp.com/getTopPicks/';
+
+					console.log(headers);
+					axios
+						.get(url, {
+							headers,
+						})
+						.then((response) => {
+							let data = [];
+
+							for (let i = 0; i < 20; i++) {
+								data.push(response.data[i]);
+							}
+
+							setTopPicks(data);
+							setLoading(false);
+						});
 				}
+			}, 1000);
 
-				const headers = {
-					canvasHeight: JSON.stringify(
-						state.canvasRef.current.clientHeight
-					),
-					canvasWidth: JSON.stringify(
-						state.canvasRef.current.clientWidth
-					),
-					elements: JSON.stringify(elements),
-				};
-				const url = 'http://pixeltoapp.com/getTopPicks/';
-
-				console.log(headers);
-				axios
-					.get(url, {
-						headers,
-					})
-					.then((response) => {
-						let data = [];
-
-						for (let i = 0; i < 100; i++) {
-							data.push(response.data[i]);
-						}
-
-						setTopPicks(data);
-						setLoading(false);
-					});
-			}
-		}, 2000);
-
-		setTimeoutID(id);
+			setTimeoutID(id);
+		}
 
 		return () => {
 			clearTimeout(id);
 		};
-	}, [state.canvas]);
+	}, [state.threshold]);
 
 	return (
 		<Box
@@ -128,7 +161,7 @@ export default function TopPicks() {
 						sx={{
 							display: 'flex',
 							flexDirection: 'column',
-							height:'80%',
+							height: '80%',
 							justifyContent: 'center',
 							alignContent: 'center',
 						}}

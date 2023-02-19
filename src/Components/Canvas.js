@@ -31,8 +31,9 @@ export default function Canvas() {
 			},
 			drop: (item) => {
 				actions.addElement(
-					'IMAGE',
 					item.src,
+					item.type,
+					item.content,
 					state.mouseRef.current.y,
 					state.mouseRef.current.x
 				);

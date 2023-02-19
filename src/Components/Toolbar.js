@@ -1,11 +1,9 @@
 import React, { useContext } from 'react';
 import '../Assets/Styles/Toolbar.css';
-import { Box } from '@mui/material';
+import { Box, Typography, Button } from '@mui/material';
 import RedoIcon from '@mui/icons-material/Redo';
 import UndoIcon from '@mui/icons-material/Undo';
 import IconButton from '@mui/material/IconButton';
-import CallToActionOutlinedIcon from '@mui/icons-material/CallToActionOutlined';
-import TitleIcon from '@mui/icons-material/Title';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { CanvasContext } from '../App';
 
@@ -15,26 +13,42 @@ const iconStyle = {
 	width: '2vw',
 };
 
+const textStyle = {
+	color: 'black',
+	height: '1.25vh',
+	display: 'flex',
+	fontSize: '1vw',
+	flexDirection: 'column',
+	textAlign: 'center',
+	alignContent: 'center',
+	justifyContent: 'center',
+};
+
 export default function Toolbar() {
 	const { actions, state } = useContext(CanvasContext);
 
 	const handleUndo = () => {
 		if (state.undo.length !== 0) {
-			actions.setRedo([...state.redo, state.canvas]);
-			actions.setCanvas(state.undo.pop());
+			actions.setRedo([...state.redo, state.threshold]);
+			let undo = state.undo.pop();
+			actions.setCanvas(undo);
+			actions.setThreshold(undo);
 		}
 	};
 
 	const handleRedo = () => {
 		if (state.redo.length !== 0) {
-			actions.setUndo([...state.undo, state.canvas]);
-			actions.setCanvas(state.redo.pop());
+			actions.setUndo([...state.undo, state.threshold]);
+			let redo = state.redo.pop();
+			actions.setCanvas(redo);
+			actions.setThreshold(redo);
 		}
 	};
 
 	const handleClear = () => {
-		actions.setUndo([...state.undo, state.canvas]);
+		actions.setUndo([...state.undo, state.threshold]);
 		actions.setCanvas([]);
+		actions.setThreshold([]);
 	};
 
 	return (
@@ -44,47 +58,43 @@ export default function Toolbar() {
 				borderRadius: '12px',
 				mt: '8%',
 				display: 'flex',
-				width: '50%',
-				padding: '5px'
+				flexDirection: 'row',
+				width: '60%',
+				padding: '5px',
+				justifyContent: 'space-around',
+				alignContent: 'center',
+				textAlign: 'center',
 			}}
 		>
-			<div className='icons'>
-				<IconButton
-					sx={iconStyle}
-					tabIndex={-1}
-					onClick={() => actions.addElement('TEXT', '18.png')}
-				>
-					<TitleIcon sx={iconStyle} />
-				</IconButton>
-				<IconButton
-					sx={iconStyle}
-					tabIndex={-1}
-					onClick={() => actions.addElement('TEXT', '19.png')}
-				>
-					<CallToActionOutlinedIcon sx={iconStyle} />
-				</IconButton>
-				<IconButton
-					sx={iconStyle}
-					tabIndex={-1}
-					onClick={handleUndo}
-				>
-					<UndoIcon sx={iconStyle} />
-				</IconButton>
-				<IconButton
-					sx={iconStyle}
-					tabIndex={-1}
-					onClick={handleRedo}
-				>
-					<RedoIcon sx={iconStyle} />
-				</IconButton>
-				<IconButton
-					sx={iconStyle}
-					tabIndex={-1}
-					onClick={handleClear}
-				>
-					<DeleteIcon sx={iconStyle} />
-				</IconButton>
-			</div>
+			<IconButton
+				tabIndex={-1}
+				onClick={() =>
+					actions.addElement('18.png', 'TEXT', '<p>Text Box</p>')
+				}
+			>
+				<Typography sx={textStyle}>TEXT</Typography>
+			</IconButton>
+			<IconButton
+				sx={iconStyle}
+				tabIndex={-1}
+				onClick={handleUndo}
+			>
+				<UndoIcon sx={iconStyle} />
+			</IconButton>
+			<IconButton
+				sx={iconStyle}
+				tabIndex={-1}
+				onClick={handleRedo}
+			>
+				<RedoIcon sx={iconStyle} />
+			</IconButton>
+			<IconButton
+				sx={iconStyle}
+				tabIndex={-1}
+				onClick={handleClear}
+			>
+				<DeleteIcon sx={iconStyle} />
+			</IconButton>
 		</Box>
 	);
 }

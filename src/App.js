@@ -12,6 +12,7 @@ export const CanvasContext = createContext();
 
 function App() {
 	const [canvas, setCanvas] = useState([]);
+	const [threshold, setThreshold] = useState([]);
 	const [undo, setUndo] = useState([]);
 	const [redo, setRedo] = useState([]);
 	const [activeSelection, setActiveSelection] = useState(new Set());
@@ -24,9 +25,10 @@ function App() {
 		const updatedData = { ...canvas?.[currentDataIndex], ...data };
 		canvas.splice(currentDataIndex, 1, updatedData);
 		setCanvas([...(canvas || [])]);
+		// setThreshold([...(canvas || [])]);
 	};
 
-	const addElement = (type, src, top, left) => {
+	const addElement = (src, type, content, top, left) => {
 		const defaultData = {
 			type: type,
 			src: src,
@@ -35,29 +37,39 @@ function App() {
 				top: top ? top : canvasRef.current.clientHeight / 2 - 25,
 				left: left
 					? left
-					: canvasRef.current.clientWidth / 2 - ((type === 'TEXT')
-					? 45
-					: 25),
+					: canvasRef.current.clientWidth / 2 -
+					  (type === 'TEXT' ? 45 : 25),
 			},
 			dimension: {
 				width: type === 'TEXT' ? '90' : '50',
 				height: '50',
 			},
-			content: type === 'TEXT' ? '<p>Enter Text</p>' : '',
+			content: content,
 		};
 		if (redo.length > 0) {
 			setRedo([]);
 		}
-		setUndo([...undo, canvas]);
-		setCanvas([...canvas, { ...defaultData, type: type ?? 'TEXT' }]);
+		setUndo([...undo, threshold]);
+		setCanvas([...canvas, { ...defaultData }]);
+		setThreshold([...canvas, { ...defaultData }]);
 		activeSelection.clear();
 		activeSelection.add(defaultData.id);
 		setActiveSelection(new Set(activeSelection));
 	};
 
 	const deleteElement = useCallback(() => {
-		setUndo([...undo, canvas]);
+		setUndo([...undo, threshold]);
 		setCanvas([
+			...canvas.filter((data) => {
+				console.log(data);
+				if (data.id && activeSelection.has(data.id)) {
+					activeSelection.delete(data.id);
+					return false;
+				}
+				return true;
+			}),
+		]);
+		setThreshold([
 			...canvas.filter((data) => {
 				console.log(data);
 				if (data.id && activeSelection.has(data.id)) {
@@ -76,6 +88,7 @@ function App() {
 			setUndo,
 			setRedo,
 			setActiveSelection,
+			setThreshold,
 			addElement,
 			deleteElement,
 			updateCanvasData,
@@ -87,6 +100,7 @@ function App() {
 			activeSelection,
 			mouseRef,
 			canvasRef,
+			threshold,
 		},
 	};
 

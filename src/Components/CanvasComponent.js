@@ -101,7 +101,7 @@ export default function CanvasComponent(props) {
 			position={{ x: position.left || 0, y: position.top || 0 }}
 			onDragStart={(e, d) => {
 				isDragged.current = true;
-				actions.setUndo([...state.undo, state.canvas]);
+				actions.setUndo([...state.undo, state.threshold]);
 				actions.updateCanvasData({
 					id,
 				});
@@ -117,7 +117,7 @@ export default function CanvasComponent(props) {
 				});
 			}}
 			onResizeStart={(e, direction, ref) => {
-				actions.setUndo([...state.undo, state.canvas]);
+				actions.setUndo([...state.undo, state.threshold]);
 				state.activeSelection.clear();
 				state.activeSelection.add(id);
 				actions.setActiveSelection(new Set(state.activeSelection));

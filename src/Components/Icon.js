@@ -1,11 +1,11 @@
 import { useDrag } from 'react-dnd';
 import { motion } from 'framer-motion';
 
-export default function Icon({ src }) {
+export default function Icon({ src, type, content }) {
 	const [, drag] = useDrag(
 		() => ({
 			type: 'image',
-			item: { src },
+			item: { src, type, content },
 		}),
 		[src]
 	);
