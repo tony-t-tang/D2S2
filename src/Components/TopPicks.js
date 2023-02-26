@@ -141,15 +141,11 @@ export default function TopPicks() {
 				sx={style}
 				className='container'
 			>
-				<Box
-					backgroundColor='#151733'
-					height='10vh'
-				>
+				<Box backgroundColor='#151733'>
 					<Typography
 						textAlign='center'
-						position='absolute'
-						marginTop='2vh'
-						marginLeft='20vw'
+						paddingTop='1vh'
+						paddingBottom='1vh'
 						color='white'
 						fontSize='2vw'
 					>
