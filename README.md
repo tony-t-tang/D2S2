@@ -1,4 +1,4 @@
-# Drag n’ Search
+# D2S2:  Drag ’n’ Drop Mobile App Screen Search
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
